@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <div class="box">
+      <app-alert [error]="isError" *ngIf="isError" (close)="isError = ''"></app-alert>
+      <div class="firstBox">
+        <h1>
+          <span>School it's about:</span>
+
+          <div class="message">
+            <div class="word1">Respect</div>
+            <div class="word2">Pace</div>
+            <div class="word3">Learning</div>
+          </div>
+        </h1>
+      </div>
+      <div class="secondBox">
+        <div class="containter">
+
+          <div class="header">
+            <header>Login</header>
+          </div>
+          <div class="spinner" *ngIf="isLoading">
+            <app-spinner></app-spinner>
+          </div>
+          <form
+            #authForm="ngForm"
+            (ngSubmit)="submit(authForm)"
+            *ngIf="!isLoading"
+          >
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                id="username"
+                required
+                ngModel
+                name="email"
+                email
+              />
+              <i class="bx bx-user"></i>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                id="password"
+                required
+                ngModel
+                name="password"
+                minlength="6"
+              />
+              <i class="bx bx-shield-quarter"></i>
+            </div>
+
+            <div class="inputForm">
+              <button id="test" type="submit" [disabled]="!authForm.valid">
+                {{ isLogin ? "Login" : " Sign Up" }}
+              </button>
+              <button type="button" class="submitSignUp" (click)="onSwitch()">
+                Switch to {{ isLogin ? "Sign Up" : "Login" }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
