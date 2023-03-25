@@ -23,7 +23,17 @@ export class LogginComponent {
     }
     this.isLoading = true;
     if (this.isLogin) {
-      this.isLoading = false;
+      this.auth.loginMethod(email, password).subscribe(
+        (response) => {
+          console.log(response);
+          this.isLoading = false;
+        },
+        (errormessages) => {
+          this.isLoading = false;
+          this.isError = errormessages;
+          console.log(errormessages);
+        }
+      );
     } else {
       this.auth.signUp(email, password).subscribe(
         (response) => {
@@ -31,9 +41,8 @@ export class LogginComponent {
           this.isLoading = false;
         },
         (errormessages) => {
-
           this.isLoading = false;
-          this.isError=errormessages;
+          this.isError = errormessages;
           console.log(errormessages);
         }
       );
