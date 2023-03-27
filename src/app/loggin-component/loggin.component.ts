@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./loggin.component.scss'],
 })
 export class LogginComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService,private router:Router) {}
   isLogin = true;
   isLoading = false;
   isError: string = '';
@@ -27,6 +28,7 @@ export class LogginComponent {
         (response) => {
           console.log(response);
           this.isLoading = false;
+          this.router.navigate(['/test'])
         },
         (errormessages) => {
           this.isLoading = false;
@@ -39,6 +41,7 @@ export class LogginComponent {
         (response) => {
           console.log(response);
           this.isLoading = false;
+          this.router.navigate(['/test']);
         },
         (errormessages) => {
           this.isLoading = false;
