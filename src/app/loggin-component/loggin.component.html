@@ -7,9 +7,12 @@
     />
   </head>
   <body>
-
     <div class="box">
-      <app-alert [error]="isError" *ngIf="isError" (close)="isError = ''"></app-alert>
+      <app-alert
+        [error]="isError"
+        *ngIf="isError"
+        (close)="isError = ''"
+      ></app-alert>
       <div class="firstBox">
         <h1>
           <span>School it's about:</span>
@@ -23,7 +26,6 @@
       </div>
       <div class="secondBox">
         <div class="containter">
-
           <div class="header">
             <header>Login</header>
           </div>

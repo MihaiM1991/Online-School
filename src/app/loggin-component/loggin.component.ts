@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'loggin-component',
@@ -15,6 +15,7 @@ export class LogginComponent {
   isError: string = '';
   onSwitch() {
     this.isLogin = !this.isLogin;
+
   }
   submit(form: NgForm) {
     const email = form.value.email;
@@ -26,9 +27,9 @@ export class LogginComponent {
     if (this.isLogin) {
       this.auth.loginMethod(email, password).subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
           this.isLoading = false;
-          this.router.navigate(['/test'])
+          this.router.navigate(['/home'])
         },
         (errormessages) => {
           this.isLoading = false;
@@ -39,9 +40,9 @@ export class LogginComponent {
     } else {
       this.auth.signUp(email, password).subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
           this.isLoading = false;
-          this.router.navigate(['/test']);
+          this.router.navigate(['/home']);
         },
         (errormessages) => {
           this.isLoading = false;
