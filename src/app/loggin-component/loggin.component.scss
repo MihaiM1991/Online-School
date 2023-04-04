@@ -235,12 +235,14 @@ h1 span {
     justify-content: center;
   }
 }
-@media only screen and (min-width: 300px) and (max-width: 510px) {
+@media only screen and (min-width: 300px) and (max-width: 521px) {
   .box {
     flex-direction: column;
+
   }
   .secondBox {
-    justify-content: start;
+    margin-left: -144px;
+
   }
   h1 span{
     margin-left: 1px;

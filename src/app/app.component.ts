@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { filter } from 'rxjs';
-import { AuthService } from './auth.service';
-import { LogginComponent } from './loggin-component/loggin.component';
+
+import { AuthService } from './shared-folder/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +8,10 @@ import { LogginComponent } from './loggin-component/loggin.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  show = false;
-  a: string[] = [];
   title = 'Online Catalog';
   constructor(private auth: AuthService) {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.auth.autoLogin();
+
+  }
 }

@@ -10,20 +10,20 @@
       <p class="text">Catalog scolar</p>
     </div>
     <div class="div1">
-      <p class="about" (click)="rutare()">About</p>
+      <p class="about"  routerLink="/about">About</p>
     </div>
     <div class="div2">
-      <p class="home">Home</p>
+      <p class="home" routerLink="/home">Home</p>
     </div>
     <div class="div3">
-      <p class="timetable">Timetable</p>
+      <p class="timetable" routerLink="/timetable">Timetable</p>
     </div>
-    <div>
+    <div *ngIf="isAuthenticate">
       <p class="user">{{userNew}}</p>
-      <!-- <i class="bx bxs-home-heart"></i> -->
+
     </div>
-    <div class="box-logout">
-      <p class="logout">Logout</p>
+    <div class="box-logout" *ngIf="isAuthenticate">
+      <p class="logout" (click)="onLogout()">Logout</p>
     </div>
   </div>
 </body>

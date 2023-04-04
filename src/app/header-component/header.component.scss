@@ -24,7 +24,7 @@ body {
   grid-template-columns: 5fr 1fr 1fr 1fr 1.5fr 1fr;
   padding: 10px;
 }
-.box-logout:hover{
+.box-logout:hover {
   background-color: rgb(185, 219, 250);
   border-radius: 30px;
   height: 60px;
@@ -99,12 +99,11 @@ body {
   display: grid;
   justify-content: center;
 }
-i{
-
+i {
   right: -106px;
-    position: relative;
+  position: relative;
 }
-.user{
+.user {
   display: grid;
   justify-content: center;
   margin-top: 13px;
@@ -112,4 +111,40 @@ i{
   margin-right: 32px;
   color: red;
   height: max-content;
+  width: 100%;
 }
+@media only screen and (min-width: 300px) and (max-width: 521px) {
+  .text {
+    font-size: 27px;
+    padding-top: 29px;
+  }
+  .about {
+    font-size: 12px;
+    padding-top: 7px;
+  }
+  .user {
+    padding-top: 7px;
+    font-size: 12px;
+    width: 100%;
+  }
+  .logout {
+    padding-top: 7px;
+    font-size: 12px;
+  }
+  .home {
+    padding-top: 7px;
+    font-size: 12px;
+  }
+  .timetable {
+    padding-top: 7px;
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 522px) and (max-width: 880px) {
+  .user {
+    padding-top: 7px;
+    font-size: 18px;
+    width: 100%;
+  }
+}
+

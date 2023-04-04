@@ -13,12 +13,13 @@ import { SpinnerComponent } from './shared-folder/spinner.component';
 import { AlertModalComponent } from './loggin-component/alert-model/alert.component';
 import { HeaderComponent } from './header-component/header.component';
 import { AboutComponent } from './about-component/about.component';
+import { TimeTable } from './timetable-component/timetable.component';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent],
+  declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent,TimeTable],
   imports: [BrowserModule, ButtonModule, AppRoutingModule,InputTextModule,FormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

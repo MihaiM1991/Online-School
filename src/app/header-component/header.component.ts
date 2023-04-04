@@ -1,8 +1,8 @@
 import { TmplAstBoundAttribute } from '@angular/compiler';
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { retry, Subscription } from 'rxjs';
-import { AuthService } from '../auth.service';
+
+import { AuthService } from '../shared-folder/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,12 +10,12 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticate = false;
-  userNew="";
+  userNew = '';
   localUser = '';
   userName = '';
-  x:[]=[];
+  x: [] = [];
 
-  constructor(private authCheck: AuthService,private router:Router) {}
+  constructor(private authCheck: AuthService, private router: Router) {}
   ngOnInit() {
     this.authCheck.userNew.subscribe((user) => {
       this.isAuthenticate = !!user;
@@ -26,10 +26,14 @@ export class HeaderComponent implements OnInit {
       for (let i = 0; i < x.length; i++) {
         x[i] = x[i][0].toUpperCase() + x[i].substr(1);
       }
-      this.userNew=x.join(' ');
+      this.userNew = x.join(' ');
+
     });
+
   }
-  rutare(){
-    this.router.navigate(['/about'])
+
+  onLogout() {
+    this.authCheck.logout();
+    this.userNew = ' ';
   }
 }
