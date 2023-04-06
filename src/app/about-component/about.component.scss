@@ -80,3 +80,16 @@ justify-content: center;
   font-family:Arial, Helvetica, sans-serif;
   color:aliceblue;
 }
+.location{
+
+  padding-left: 82px;
+}
+.info{
+  font-weight: bold;
+
+}
+@media only screen and (min-width: 300px) and (max-width: 521px){
+  .text1{font-size: 15px;}
+  .text2{font-size: 15px;}
+  .text3{font-size: 15px; padding-left: 22px;}
+}

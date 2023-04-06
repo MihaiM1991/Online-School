@@ -13,7 +13,7 @@
       <div class="purpose" (click)="onPurpose()">
         <p class="text2">Catalog Purpose</p>
       </div>
-      <div class="contact">
+      <div class="contact" (click)="onLocated()">
         <p class="text3">Contact</p>
       </div>
     </div>
@@ -39,9 +39,44 @@
         </p>
       </div>
       <div *ngIf="!isShow">
-        <p class="textDescription">The purpose of an online catalog for a school is to provide students, parents, faculty, and staff with a comprehensive and easily accessible source of information about the courses, programs, and services offered by the school.
-          In addition, an online catalog can be a valuable tool for prospective students and their families who are researching schools. It can provide detailed information about the school's history, mission, and values, as well as its academic programs and services.
-          Overall, an online catalog can help promote transparency, accessibility, and communication within a school community by providing a centralized and up-to-date source of information about the school's academic offerings and policies.</p>
+        <p class="textDescription">
+          The purpose of an online catalog for a school is to provide students,
+          parents, faculty, and staff with a comprehensive and easily accessible
+          source of information about the courses, programs, and services
+          offered by the school. In addition, an online catalog can be a
+          valuable tool for prospective students and their families who are
+          researching schools. It can provide detailed information about the
+          school's history, mission, and values, as well as its academic
+          programs and services. Overall, an online catalog can help promote
+          transparency, accessibility, and communication within a school
+          community by providing a centralized and up-to-date source of
+          information about the school's academic offerings and policies.
+        </p>
+      </div>
+      <div class="location" *ngIf="!isLocated">
+        <div class="info">
+          <p>Street:Unirii, 30A, Bucharest</p>
+        </div>
+        <div class="info">
+          <p>Phone Number:0755 123 123</p>
+
+        </div>
+        <div class="info">
+          <p>Email:futureschool@yahoo.com</p>
+        </div>
+        <google-map
+          height="250px"
+          width="500px"
+          [center]="center"
+          [zoom]="zoom"
+          (mapClick)="moveMap($event)"
+          (mapMousemove)="move($event)"
+
+        >
+
+        </google-map>
+        <div>Latitude: {{ display?.lat }}</div>
+        <div>Longitude: {{ display?.lng }}</div>
       </div>
     </div>
   </div>

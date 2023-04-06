@@ -14,13 +14,14 @@ import { AlertModalComponent } from './loggin-component/alert-model/alert.compon
 import { HeaderComponent } from './header-component/header.component';
 import { AboutComponent } from './about-component/about.component';
 import { TimeTable } from './timetable-component/timetable.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
 
 @NgModule({
   declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent,TimeTable],
-  imports: [BrowserModule, ButtonModule, AppRoutingModule,InputTextModule,FormsModule,HttpClientModule],
+  imports: [BrowserModule, ButtonModule, AppRoutingModule,InputTextModule,FormsModule,HttpClientModule,GoogleMapsModule ],
   providers: [],
   bootstrap: [AppComponent],
 })
