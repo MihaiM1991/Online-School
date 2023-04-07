@@ -26,6 +26,6 @@ export class TimeTable implements OnInit {
   goToDisciplines($event,abc){
 this.test=abc;
     this.router.navigate(['/disciplines']);
-    console.log(this.test)
+    console.log(this.test);
   }
 }
