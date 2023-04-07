@@ -1,0 +1,28 @@
+td:hover{
+  background-color: red;;
+  cursor: pointer;
+}
+
+td, th {
+  padding: 10px;
+  position: relative;
+
+}
+
+tr:hover{
+  background-color: yellow;
+  color:blue;
+  cursor: pointer;
+}
+.col:hover::after,th:hover::after {
+  background-color: rgba(255, 255, 0, 0.5);
+  color:blue;
+  content: '\00a0';
+  height: 10000px;
+  left: 0;
+  position: absolute;
+  top: -5000px;
+  width: 100%;
+}
+
+

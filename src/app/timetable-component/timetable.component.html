@@ -1,10 +1,25 @@
-<google-map height="400px"
-            width="750px"
-            [center]="center"
-            [zoom]="zoom"
-            (mapClick)="moveMap($event)"
-            (mapMousemove)="move($event)">
-</google-map>
-<div>Latitude: {{display?.lat}}</div>
-<div>Longitude: {{display?.lng}}</div>
+<p-table [value]="discExample" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+      <tr>
+          <th class="col">Time</th>
+          <th class="col">Monday</th>
+          <th class="col">Tuesday</th>
+          <th class="col">Wednsesday</th>
+          <th class="col">Thursday</th>
+          <th class="col">Friday</th>
+      </tr>
+  </ng-template>
+
+    <ng-template pTemplate="body" let-discExample>
+      <tr>
+          <td class="text">{{discExample.time}}</td>
+          <td (click)="goToDisciplines($event,discExample.mat1)">{{discExample.mat1}}</td>
+          <td (click)="goToDisciplines($event,discExample.mat2)">{{discExample.mat2}}</td>
+          <td (click)="goToDisciplines($event,discExample.mat3)">{{discExample.mat3}}</td>
+          <td (click)="goToDisciplines($event,discExample.mat4)">{{discExample.mat4}}</td>
+          <td (click)="goToDisciplines($event,discExample.mat5)">{{discExample.mat5}}</td>
+      </tr>
+  </ng-template>
+</p-table>
+
 

@@ -1,26 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as FileSaver from 'file-saver';
 
+import jsPDF from 'jspdf';
+
+import 'jspdf-autotable';
+import { timeTableService } from './timetable.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
   styleUrls: ['./timetable.component.scss'],
 })
-export class TimeTable  {
+export class TimeTable implements OnInit {
 
-  constructor() {}
-  display : any;
-  center: google.maps.LatLngLiteral = {lat: 24, lng: 12};
-  zoom = 4;
+  discExample;
+  test
+  constructor(private disciplines: timeTableService,private router:Router) {}
 
-  moveMap(event: google.maps.MapMouseEvent) {
-    if(event.latLng!= null)
-    this.center = (event.latLng.toJSON());
+  ngOnInit() {
+    this.disciplines.getTimeTableInfo().subscribe((data) => {
+      this.discExample = data;
+    });
   }
-
-  move(event: google.maps.MapMouseEvent) {
-    if(event.latLng != null)
-    this.display = event.latLng.toJSON();
+  goToDisciplines($event,abc){
+this.test=abc;
+    this.router.navigate(['/disciplines']);
+    console.log(this.test)
   }
-
 }
