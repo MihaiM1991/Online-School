@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header-component/header.component';
-import { LogginComponent } from './loggin-component/loggin.component';
+import { LogginComponent } from './login-component/loggin.component';
 import { HomeComponent } from './home-component/home.component';
 import { AboutComponent } from './about-component/about.component';
 import { TimeTable } from './timetable-component/timetable.component';
