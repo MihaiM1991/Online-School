@@ -9,7 +9,7 @@ body {
   margin-bottom: -8px;
 }
 .text {
-  font-family: "FastHand";
+
   display: grid;
   padding-left: 16px;
   font-size: large;
@@ -18,8 +18,11 @@ body {
 }
 .box-text {
   margin-top: -55px;
+  padding-top: 11px;
+  padding-left: 40px;;
 }
 .box-header {
+
   display: grid;
   grid-template-columns: 5fr 1fr 1fr 1fr 1.5fr 1fr;
   padding: 10px;
@@ -80,24 +83,29 @@ body {
   display: grid;
   justify-content: center;
   font-size: 18px;
+  color:white;
 }
 .home {
   display: grid;
   justify-content: center;
   font-size: 18px;
+  color:white;
 }
 .about {
   display: grid;
   justify-content: center;
   font-size: 18px;
+  color:white;
 }
 .user {
   display: grid;
   justify-self: center;
+  color:white;
 }
 .logout {
   display: grid;
   justify-content: center;
+  color:white;
 }
 i {
   right: -106px;
@@ -109,7 +117,7 @@ i {
   margin-top: 13px;
   font-size: 25px;
   margin-right: 32px;
-  color: red;
+  color: rgb(10, 13, 23);
   height: max-content;
   width: 100%;
 }

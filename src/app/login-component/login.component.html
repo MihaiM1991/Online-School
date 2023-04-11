@@ -27,7 +27,7 @@
       <div class="secondBox">
         <div class="containter">
           <div class="header">
-            <header>Login</header>
+            <header>{{ isLogin ? "Login" : "Sign Up" }}</header>
           </div>
           <div class="spinner" *ngIf="isLoading">
             <app-spinner></app-spinner>

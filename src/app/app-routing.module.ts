@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header-component/header.component';
-import { LogginComponent } from './login-component/loggin.component';
+import { LogginComponent } from './login-component/login.component';
 import { HomeComponent } from './home-component/home.component';
 import { AboutComponent } from './about-component/about.component';
 import { TimeTable } from './timetable-component/timetable.component';
 import { AuthGuard } from './shared-folder/auth-guard';
 import { AuthGuardTest } from './shared-folder/auth-guard-test';
-import { disciplines } from './disciplines-component/disciplines.component';
+import { SchoolSubject } from './school subject/school-subject.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'timetable', component: TimeTable, canActivate: [AuthGuard] },
-  { path: 'disciplines', component: disciplines,canActivate: [AuthGuard] },
+  { path: 'school-subjects', component: SchoolSubject, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

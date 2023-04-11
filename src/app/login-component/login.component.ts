@@ -5,8 +5,8 @@ import { AuthService } from '../shared-folder/auth.service';
 
 @Component({
   selector: 'loggin-component',
-  templateUrl: './loggin.component.html',
-  styleUrls: ['./loggin.component.scss'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LogginComponent {
   constructor(private auth: AuthService,private router:Router) {}

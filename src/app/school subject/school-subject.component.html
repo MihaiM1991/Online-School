@@ -1,0 +1,15 @@
+<body >
+  <div class="welcomeBox">
+    <p class="welcomeText">Welcome to {{ showSchObj }} class</p>
+  </div>
+  <div class="box">
+    <div class="box1">
+      <img class="imagine" src="assets/math.jpg" *ngIf="showSchObj=='Math'"/>
+      <img class="imagine" src="assets/imagine1.jpg" *ngIf="showSchObj=='Science'"/>
+    </div>
+    <div class="box2">
+      <div class="intro">Introduction</div>
+      <div>{{ showDescription }}</div>
+    </div>
+  </div>
+</body>

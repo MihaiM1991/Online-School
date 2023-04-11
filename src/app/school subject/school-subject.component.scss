@@ -1,0 +1,33 @@
+body{
+  background-color: rgb(255, 255, 255);
+}
+.welcomeBox {
+  padding: 10px;
+  overflow: hidden;
+}
+.intro {
+  // width: 130px;;
+  font-size: 25px;
+  margin-bottom: 60px;
+  border-bottom: thick double #32a1ce;
+}
+.welcomeText {
+  overflow: auto;
+  text-align: center;
+
+  font-weight: bold;
+  font-size: 27px;
+}
+.box {
+  margin-top: 60px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.box1 {
+  display: grid;
+}
+.imagine {
+  width: 90%;
+  height: 90%;
+}

@@ -51,8 +51,6 @@ export class AboutComponent implements OnInit {
   move(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.display = event.latLng.toJSON();
   }
-  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerOptions: google.maps.MarkerOptions = { draggable: false };
   markerPositions: google.maps.LatLngLiteral[] = [];
-
-
 }

@@ -1,5 +1,6 @@
 td:hover{
-  background-color: red;;
+  // background-color:rgb(114, 213, 124);
+  background-color: #32a1ce;
   cursor: pointer;
 }
 
@@ -10,12 +11,14 @@ td, th {
 }
 
 tr:hover{
-  background-color: yellow;
-  color:blue;
+  background-color:rgb(128, 125, 125);
+
+  color:black;
+
   cursor: pointer;
 }
 .col:hover::after,th:hover::after {
-  background-color: rgba(255, 255, 0, 0.5);
+  background-color: rgba(232, 232, 163, 0.5);
   color:blue;
   content: '\00a0';
   height: 10000px;
@@ -23,6 +26,7 @@ tr:hover{
   position: absolute;
   top: -5000px;
   width: 100%;
+  cursor: pointer;
 }
 
 
