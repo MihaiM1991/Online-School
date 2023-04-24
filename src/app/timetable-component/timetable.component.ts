@@ -29,9 +29,12 @@ export class TimeTable implements OnInit {
     });
   }
   goToDisciplines($event, abc) {
-
+if(abc =="Sport" || abc=="Science" || abc=="Math" || abc=="History" || abc=="Economics") {
     this.router.navigate(['/school-subjects'],{fragment: abc });
     this.getData.takeSchoolSubject(abc);
-
+}
+else {
+  return;
+}
   }
 }

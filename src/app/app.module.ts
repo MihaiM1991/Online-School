@@ -17,13 +17,12 @@ import { TimeTable } from './timetable-component/timetable.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { TableModule } from 'primeng/table';
 import { SchoolSubject } from './school subject/school-subject.component';
-
-
-
+import { Teachers } from './teachers.component/teachers.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
-  declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent,TimeTable,SchoolSubject],
-  imports: [BrowserModule,TableModule, ButtonModule, AppRoutingModule,InputTextModule,FormsModule,HttpClientModule,GoogleMapsModule ],
+  declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent,TimeTable,SchoolSubject,Teachers],
+  imports: [BrowserModule,TableModule, ButtonModule, AppRoutingModule,InputTextModule,FormsModule,HttpClientModule,GoogleMapsModule,YouTubePlayerModule ],
   providers: [],
   bootstrap: [AppComponent],
 })

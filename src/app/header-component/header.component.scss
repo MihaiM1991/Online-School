@@ -15,6 +15,7 @@ body {
   font-size: large;
   font-size: 45px;
   align-self: start;
+  color: white;
 }
 .box-text {
   margin-top: -55px;
@@ -97,7 +98,7 @@ body {
   font-size: 18px;
   color:white;
 }
-.user {
+p.user {
   display: grid;
   justify-self: center;
   color:white;
@@ -123,7 +124,7 @@ i {
 }
 @media only screen and (min-width: 300px) and (max-width: 521px) {
   .text {
-    font-size: 27px;
+    font-size: 25px;
     padding-top: 29px;
   }
   .about {
@@ -151,8 +152,11 @@ i {
 @media only screen and (min-width: 522px) and (max-width: 880px) {
   .user {
     padding-top: 7px;
-    font-size: 18px;
+    font-size: 15px;
     width: 100%;
+  }
+  .text{
+    font-size: 35px;
   }
 }
 

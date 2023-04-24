@@ -1,0 +1,57 @@
+<body>
+  <div class="box">
+    <div class="box1">
+      <div clas="aboutBox">
+        <p class="about">
+          Teachers play a critical role in shaping the intellectual and personal
+          development of their students.
+        </p>
+      </div>
+      <div class="description">
+        <p class="textDesc">About {{ showTeach }} teacher</p>
+        <div *ngIf="showText">
+          <p>{{ showTeachDesc }}</p>
+        </div>
+        <div *ngIf="!showText">
+          <p>{{ text }}...</p>
+        </div>
+
+        <button (click)="showMore()">
+          {{ showText ? "See Less" : "See More" }}
+        </button>
+      </div>
+    </div>
+    <div class="box2">
+      <div class="firstPhoto">
+        <img class="teacherfoto" src="assets/teach1.jpg" />
+        <div class="teachName">
+          <p class="a">{{ showName }}</p>
+          <p class="b">{{ showTeach }} Teacher</p>
+          <p-button
+            icon="pi pi-user"
+            styleClass="p-button-rounded p-button-info p-button-text p-button-raised"
+          ></p-button>
+
+        </div>
+      </div>
+      <div class="firstVideo">
+        <youtube-player
+          videoId="Ld5X3C_8OdM"
+          [height]="200"
+          [width]="240"
+          suggestedQuality="hd720"
+        >
+        </youtube-player>
+      </div>
+      <div class="secondVideo">
+        <youtube-player
+          videoId="Xh7lrudBzh8"
+          [height]="200"
+          [width]="240"
+          suggestedQuality="hd720"
+        >
+        </youtube-player>
+      </div>
+    </div>
+  </div>
+</body>

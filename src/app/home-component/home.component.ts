@@ -14,4 +14,5 @@ export class HomeComponent implements OnInit {
 
     this.local = this.auth.userName.email;
   }
+
 }

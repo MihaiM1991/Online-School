@@ -1,14 +1,20 @@
-body{
+body {
   background-color: rgb(255, 255, 255);
 }
+
 .welcomeBox {
   padding: 10px;
   overflow: hidden;
 }
-.intro {
-  // width: 130px;;
+.description {
   font-size: 25px;
   margin-bottom: 60px;
+  border-bottom: thick double #32a1ce;
+}
+.intro {
+  margin-top: 40px;
+  font-size: 25px;
+  margin-bottom: 50px;
   border-bottom: thick double #32a1ce;
 }
 .welcomeText {
@@ -19,7 +25,8 @@ body{
   font-size: 27px;
 }
 .box {
-  margin-top: 60px;
+  background-color: aliceblue;
+  margin-top: 5px;
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -28,6 +35,50 @@ body{
   display: grid;
 }
 .imagine {
+  margin-top: 10px;
   width: 90%;
   height: 90%;
+}
+@media only screen and (min-width: 510px) and (max-width: 900px) {
+  .box {
+    grid-template-columns: 1fr;
+  }
+  .secondBox {
+    grid-template-columns: 1fr;
+  }
+}
+.secondBox {
+  margin-top: 100px;
+
+  display: grid;
+  column-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.teachers {
+  display: grid;
+  height: 400px;
+  background-color: aliceblue;
+}
+.teacherfoto {
+  display: grid;
+  height: 220px;
+  width: 100%;
+}
+.info {
+  display: grid;
+  height: 400px;
+  background-color: aliceblue;
+}
+.about {
+  display: grid;
+  justify-content: center;
+}
+.aboutTeacher {
+  font-size: 30px;
+}
+.about:hover {
+  cursor: pointer;
+  border-bottom: 1rem solid #32a1ce;
 }

@@ -103,7 +103,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 10px 0 10px 0;
-  font-family: "FastHand";
+
 }
 i {
   position: relative;
@@ -136,12 +136,14 @@ h1 {
 }
 
 h1 span {
-  font-size: 30px;
+  font-size: 35px;
   margin-left: 20px;
-  font-family: "FastHand";
+
 }
 
 .message {
+  margin-left: 87px;
+margin-top: 2px;
   color: white;
   display: block;
   font-weight: 900;

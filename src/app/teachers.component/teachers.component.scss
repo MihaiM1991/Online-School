@@ -1,0 +1,130 @@
+.box {
+  margin-top: 50px;
+  grid-template-columns: 700px 1fr;
+  display: grid;
+  column-gap: 10px;
+}
+.box1 {
+  display: grid;
+  height: 87px;
+  border-radius: 10px;
+}
+.firstVideo{
+  padding: 10px;
+
+}
+.box2 {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  box-shadow: inset 0 0 20px #aeb0e7;
+  height: 512px;
+  border-radius: 10px;
+  border-style: outset;
+  border-color: rgb(8, 46, 84);
+}
+.aboutBox {
+  height: 72px;
+  margin-bottom: 18px;
+}
+.about {
+  display: grid;
+  box-shadow: inset 0 0 10px #aeb0e7;
+  margin-top: -2px;
+
+  padding: 10px;
+  display: grid;
+  font-size: 30px;
+  color: black;
+  border-radius: 10px;
+}
+.description {
+  box-shadow: inset 0 0 15px #e3e4ee;
+  margin-top: -24px;
+  border-radius: 10px;
+  display: grid;
+  padding: 10px;
+  color: whitesmoke;
+  background-color: rgb(8, 46, 84);
+}
+.textDesc {
+  display: grid;
+  padding-left: 224px;
+  font-size: 23px;
+}
+button {
+  display: grid;
+  width: 80px;
+  border: none;
+  background-color: rgb(8, 46, 84);
+  color: white;
+  size: 20px;
+}
+button:hover {
+  cursor: pointer;
+}
+.secondVideo{
+  padding: 10px;
+}
+.firstPhoto {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end:3;
+
+  padding: 10px;
+  width: 400px;
+  height: 95%;
+}
+.teacherfoto {
+
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 90%;
+  height: 80%;
+}
+.teachName {
+  display: grid;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-top: -20px;
+  background-color: rgb(8, 46, 84);
+  width: 90%;
+  height: 25%;
+}
+p-button {
+  position:relative;
+  right: -283px;
+  top: -65px;
+}
+.a {
+  padding-left: 10px;
+  justify-self: start;
+  font-size: 22px;
+  color: white;
+}
+.b {
+  color: white;
+  justify-self: start;
+  padding-left: 12px;
+  margin-top: -4px;
+  font-size: 15px;
+}
+@media only screen and (min-width: 522px) and (max-width: 880px) {
+  .box {
+    grid-template-columns: 1fr;
+  }
+  .box2 {
+    height: 900px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 292px;
+  }
+  .firstPhoto{
+    height: 400px;
+  }
+}
+
+
+
