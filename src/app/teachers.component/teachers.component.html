@@ -9,11 +9,11 @@
       </div>
       <div class="description">
         <p class="textDesc">About {{ showTeach }} teacher</p>
-        <div *ngIf="showText">
+        <div *ngIf="showText" class="textClass">
           <p>{{ showTeachDesc }}</p>
         </div>
         <div *ngIf="!showText">
-          <p>{{ text }}...</p>
+          <p >{{ text }}...</p>
         </div>
 
         <button (click)="showMore()">
@@ -28,17 +28,18 @@
           <p class="a">{{ showName }}</p>
           <p class="b">{{ showTeach }} Teacher</p>
           <p-button
+
+            (click)="getTeach()"
             icon="pi pi-user"
             styleClass="p-button-rounded p-button-info p-button-text p-button-raised"
           ></p-button>
-
         </div>
       </div>
       <div class="firstVideo">
         <youtube-player
           videoId="Ld5X3C_8OdM"
           [height]="200"
-          [width]="240"
+          [width]="200"
           suggestedQuality="hd720"
         >
         </youtube-player>
@@ -47,7 +48,7 @@
         <youtube-player
           videoId="Xh7lrudBzh8"
           [height]="200"
-          [width]="240"
+          [width]="200"
           suggestedQuality="hd720"
         >
         </youtube-player>
@@ -55,3 +56,5 @@
     </div>
   </div>
 </body>
+
+<router-outlet></router-outlet>

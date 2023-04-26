@@ -1,6 +1,6 @@
 .box {
   margin-top: 50px;
-  grid-template-columns: 700px 1fr;
+  grid-template-columns: 600px 1fr;
   display: grid;
   column-gap: 10px;
 }
@@ -9,21 +9,21 @@
   height: 87px;
   border-radius: 10px;
 }
-.firstVideo{
+.firstVideo {
   padding: 10px;
-
 }
 .box2 {
-
+  width: 619px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   box-shadow: inset 0 0 20px #aeb0e7;
-  height: 512px;
+  height: 531px;
   border-radius: 10px;
   border-style: outset;
   border-color: rgb(8, 46, 84);
 }
+
 .aboutBox {
   height: 72px;
   margin-bottom: 18px;
@@ -50,7 +50,7 @@
 }
 .textDesc {
   display: grid;
-  padding-left: 224px;
+  padding-left: 169px;
   font-size: 23px;
 }
 button {
@@ -64,21 +64,23 @@ button {
 button:hover {
   cursor: pointer;
 }
-.secondVideo{
+.textClass{
+  font-size: 13.9px;
+}
+.secondVideo {
   padding: 10px;
 }
 .firstPhoto {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
-  grid-row-end:3;
+  grid-row-end: 3;
 
   padding: 10px;
   width: 400px;
   height: 95%;
 }
 .teacherfoto {
-
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   width: 90%;
@@ -94,7 +96,7 @@ button:hover {
   height: 25%;
 }
 p-button {
-  position:relative;
+  position: relative;
   right: -283px;
   top: -65px;
 }
@@ -121,10 +123,7 @@ p-button {
     grid-template-rows: 1fr;
     margin-top: 292px;
   }
-  .firstPhoto{
+  .firstPhoto {
     height: 400px;
   }
 }
-
-
-

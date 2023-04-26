@@ -1,20 +1,23 @@
-.hover-element {
-  position: relative;
-  display: inline-block;
+
+.box {
+  margin-top: 100px;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+}
+.box1 {
+  display: grid;
+padding-left: 45px;
+
+  font-size: 4rem;
+}
+.box2 {
+  background-color: blue;
+}
+.box1 p{
+  padding-left: 20px;
+border-style: dotted;
+  margin:0px;
+  width: 250px;
+
 }
 
-.hover-text {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 5px;
-}
-
-.hover-element:hover .hover-text {
-  display: block;
-}

@@ -19,9 +19,11 @@ import { TableModule } from 'primeng/table';
 import { SchoolSubject } from './school subject/school-subject.component';
 import { Teachers } from './teachers.component/teachers.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { teachDescription } from './teach-description/teach-description.component';
+
 
 @NgModule({
-  declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent,TimeTable,SchoolSubject,Teachers],
+  declarations: [AppComponent, LogginComponent,HomeComponent,SpinnerComponent,AlertModalComponent,HeaderComponent,AboutComponent,TimeTable,SchoolSubject,Teachers,teachDescription],
   imports: [BrowserModule,TableModule, ButtonModule, AppRoutingModule,InputTextModule,FormsModule,HttpClientModule,GoogleMapsModule,YouTubePlayerModule ],
   providers: [],
   bootstrap: [AppComponent],
