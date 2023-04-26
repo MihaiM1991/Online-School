@@ -9,6 +9,7 @@ import { AuthGuard } from './shared-folder/auth-guard';
 import { AuthGuardTest } from './shared-folder/auth-guard-test';
 import { SchoolSubject } from './school subject/school-subject.component';
 import { Teachers } from './teachers.component/teachers.component';
+import { teachDescription } from './teach-description/teach-description.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,8 +18,21 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'timetable', component: TimeTable, canActivate: [AuthGuard] },
-  { path: 'school-subjects', component: SchoolSubject, canActivate: [AuthGuard] },
-  { path: 'teachers', component: Teachers, canActivate: [AuthGuard] },
+  {
+    path: 'school-subjects',
+    component: SchoolSubject,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'teachers',
+    component: Teachers,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'name',
+    component: teachDescription,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
