@@ -9,17 +9,17 @@ import { AuthService } from '../shared-folder/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LogginComponent {
-  constructor(private auth: AuthService,private router:Router) {}
+  constructor(private auth: AuthService, private router: Router) {}
   isLogin = true;
   isLoading = false;
   isError: string = '';
   onSwitch() {
     this.isLogin = !this.isLogin;
-
   }
   submit(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
+
     if (!form.value) {
       return;
     }
@@ -29,7 +29,7 @@ export class LogginComponent {
         (response) => {
           // console.log(response);
           this.isLoading = false;
-          this.router.navigate(['/home'])
+          this.router.navigate(['/home']);
         },
         (errormessages) => {
           this.isLoading = false;

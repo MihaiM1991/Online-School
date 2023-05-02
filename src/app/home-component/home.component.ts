@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared-folder/auth.service';
+import { Location } from '@angular/common';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +9,19 @@ import { AuthService } from '../shared-folder/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  local: string = null;
-  constructor(private auth: AuthService) {}
+  click:boolean=false;
+  constructor(private route:Router,private location:Location){}
+  ngOnInit(): void {}
+  onClick() {
+    this.click=!this.click;
+    if(this.click==true)
+    {this.route.navigate(['/home/teachersList'])}
+    else{
+      this.location.back()
+    }
 
-  ngOnInit(): void {
-
-    this.local = this.auth.userName.email;
   }
-
+  goGrades(){
+    this.route.navigate(['grades'])
+  }
 }

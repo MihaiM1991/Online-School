@@ -10,11 +10,11 @@
       <div class="about">
         <p class="text1" (click)="onSelect()">About FutureSchool</p>
       </div>
-      <div class="purpose" (click)="onPurpose()">
-        <p class="text2">Catalog Purpose</p>
+      <div class="purpose" >
+        <p class="text2" (click)="onPurpose()">Catalog Purpose</p>
       </div>
-      <div class="contact" (click)="onLocated()">
-        <p class="text3">Contact</p>
+      <div class="contact" >
+        <p class="text3" (click)="onLocated()">Contact</p>
       </div>
     </div>
 
@@ -59,7 +59,6 @@
         </div>
         <div class="info">
           <p>Phone Number:0755 123 123</p>
-
         </div>
         <div class="info">
           <p>Email:futureschool@yahoo.com</p>
@@ -71,9 +70,7 @@
           [zoom]="zoom"
           (mapClick)="moveMap($event)"
           (mapMousemove)="move($event)"
-
         >
-
         </google-map>
         <div>Latitude: {{ display?.lat }}</div>
         <div>Longitude: {{ display?.lng }}</div>

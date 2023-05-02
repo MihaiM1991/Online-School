@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './teach-description.component.html',
   styleUrls: ['./teach-description.component.scss'],
 })
-export class teachDescription implements OnInit {
+export class TeachDescription implements OnInit {
   teachName: any;
   id: any;
   constructor(private show: teacherService, private route: ActivatedRoute) {}

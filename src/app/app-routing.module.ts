@@ -9,12 +9,25 @@ import { AuthGuard } from './shared-folder/auth-guard';
 import { AuthGuardTest } from './shared-folder/auth-guard-test';
 import { SchoolSubject } from './school subject/school-subject.component';
 import { Teachers } from './teachers.component/teachers.component';
-import { teachDescription } from './teach-description/teach-description.component';
+import { TeachDescription } from './teach-description/teach-description.component';
+import { TeachersList } from './teachers-list/teachers-list.component';
+import { StudentGrades } from './student-grades/student-grades.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LogginComponent, canActivate: [AuthGuardTest] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'teachersList',
+        component: TeachersList,
+        canActivate: [AuthGuard],
+      },
+    ],
+  },
   { path: 'header', component: HeaderComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'timetable', component: TimeTable, canActivate: [AuthGuard] },
@@ -30,7 +43,12 @@ const routes: Routes = [
   },
   {
     path: 'name',
-    component: teachDescription,
+    component: TeachDescription,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'grades',
+    component: StudentGrades,
     canActivate: [AuthGuard],
   },
 ];

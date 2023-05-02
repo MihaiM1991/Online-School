@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { teacherEx } from './mock-teachers';
 
 @Injectable({ providedIn: 'root' })
 export class teacherService {
+  listName:any;
   teacher: any;
   teachName: any;
    dataName(data: any) {
@@ -22,4 +23,11 @@ export class teacherService {
     const descriptionTeach = teacherEx.find((element) => element.id == data);
     return descriptionTeach;
   }
+  listTeacher():Observable<{}>{
+    this.listName=of(teacherEx);
+    return this.listName;
+  }
 }
+
+
+

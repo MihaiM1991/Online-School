@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
       this.isAuthenticate = !!user;
       this.localUser = user.email;
       this.userName = this.localUser.slice(0, this.localUser.indexOf('@'));
-      // console.log(this.userName.split(".").join(" ")[0].toUpperCase);
+
       let x = this.userName.split('.');
       for (let i = 0; i < x.length; i++) {
         x[i] = x[i][0].toUpperCase() + x[i].substr(1);

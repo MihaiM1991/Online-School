@@ -18,20 +18,20 @@ body {
 }
 .box1 {
   display: grid;
-
+  justify-items:center;
   grid-template-columns: 1fr;
-  height: 100px;
+  grid-template-rows: 33px 33px 33px;
 }
 .about {
-  height: 33px;
+
   display: grid;
 }
 .purpose {
-  height: 33px;
+
   display: grid;
 }
 .contact {
-  height: 33px;
+
   display: grid;
 }
 .text3 {

@@ -3,6 +3,14 @@
     <div class="box1">
       <p>Content</p>
     </div>
-    <div class="box2">test</div>
+    <div class="box2">
+      <div class="box2-item1" (click)="goGrades()"><p>Student Grades</p></div>
+      <div class="box2-item2" (click)="onClick()" routerLink="/home/teachersList"><p>School Teachers</p></div>
+      <div class="box2-item3"><p>Test1</p></div>
+      <div class="box2-item4"><p>Test2</p></div>
+    </div>
   </div>
+
 </body>
+<router-outlet></router-outlet>
+

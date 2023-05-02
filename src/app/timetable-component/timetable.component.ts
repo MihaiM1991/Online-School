@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import * as FileSaver from 'file-saver';
 
-import jsPDF from 'jspdf';
 
 import 'jspdf-autotable';
 import { timeTableService } from './timetable.service';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { schoolSubjectService } from '../school subject/schoolsubject.service';
 
 @Component({

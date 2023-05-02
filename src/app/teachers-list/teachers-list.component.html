@@ -1,0 +1,19 @@
+<body>
+  <div class="container">
+    <div class="container-name">Teachers</div>
+    <div class="container-teachers">
+      <div
+        *ngFor="let test of showTeachName; let i = index"
+        [ngClass]="{
+          'class-one': i === 0,
+          'class-two': i === 1,
+          'class-three': i === 2,
+          'class-four': i === 3,
+          'class-five': i === 4
+        }"
+      (click)="goTo(test.name)">
+      {{i+1}}  {{ test.name }} {{ test.id }} Teacher
+      </div>
+    </div>
+  </div>
+</body>

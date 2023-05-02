@@ -1,0 +1,28 @@
+.container {
+  margin-top: 30px;
+}
+.container-name {
+  display: grid;
+  padding-left: 85px;
+
+  font-size: 4rem;
+}
+.container-teachers{
+  margin-top: 20px;
+  display: grid;
+grid-template-columns:1fr;
+grid-template-rows: repeat(5,40px);
+}
+.class-one,.class-two,.class-three,.class-four,.class-five:hover{
+  cursor: pointer;
+}
+.class-one{
+
+
+}
+.class-two{
+
+}
+.container-teachers{
+  padding-left: 113px;
+}

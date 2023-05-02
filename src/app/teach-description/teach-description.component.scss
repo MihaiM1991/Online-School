@@ -63,16 +63,16 @@ span {
   width: 100px;
   color: rgb(8, 46, 84);
 }
-@media only screen and (min-width: 993) and (max-width: 1300) {
+@media only screen and (min-width: 993px) and (max-width: 1300px) {
   .box {
-    grid-template-columns: 2fr 3fr;
+
 
   }
 
 }
-@media only screen and (min-width: 510) and (max-width: 993) {
+@media only screen and (min-width: 510px) and (max-width: 993px) {
   .box {
-    grid-template-columns: 1fr 1fr;
+
   }
 
 }
