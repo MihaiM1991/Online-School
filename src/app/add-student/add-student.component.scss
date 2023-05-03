@@ -1,0 +1,16 @@
+
+.row{
+  display:  flex;
+  flex-direction: row;
+padding-top: 10px;
+  gap:10px;
+}
+body{
+  display: grid;
+  justify-content: center;
+  height: 400px;
+}
+.title{
+  height: 100px;
+  margin-bottom: -100px;
+}

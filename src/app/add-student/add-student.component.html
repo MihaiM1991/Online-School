@@ -1,9 +1,40 @@
+<body>
+  <div class="title">
+    <h1>Add New Student</h1>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div>
+        <input
+          pInputText
+          type="text"
+          class="p-inputtext-sm"
+          placeholder="First Name"
+        />
+      </div>
+      <div>
+        <input
+          pInputText
+          type="text"
+          class="p-inputtext-sm"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <p-dropdown
+        [options]="cities"
+        [(ngModel)]="selectedCity"
+        optionLabel="name"
 
-<div mat-dialog-title>
-  <h1>Add Student</h1>
-</div>
-<div mat-dialog-content></div>
-<div mat-dialog-action>
-  <button mat-raised-button>Cancel</button>
-  <button mat-raised-button color="primary">Save</button>
-</div>
+      ></p-dropdown>
+      <p-inputNumber inputId="integeronly" [(ngModel)]="value1" [min]="1";
+      [max]="10">
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="action">
+    <button>Cancel</button>
+    <button>Save</button>
+  </div>
+</body>

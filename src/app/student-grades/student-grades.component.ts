@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { timeTableService } from '../timetable-component/timetable.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddStudent } from '../add-student/add-student.component';
 
 @Component({
@@ -9,6 +9,7 @@ import { AddStudent } from '../add-student/add-student.component';
   styleUrls: ['./student-grades.component.scss'],
 })
 export class StudentGrades implements OnInit {
+  [x: string]: any;
   discListAll: any;
   test: object[] = [
     {
@@ -20,8 +21,9 @@ export class StudentGrades implements OnInit {
       value: 10,
     },
   ];
+
   matsArray: string[] = [];
-  constructor(private discList: timeTableService,private diaglog:MatDialog) {}
+  constructor(private discList: timeTableService, private dialog: MatDialog) {}
   ngOnInit(): void {
     this.discList.getTimeTableInfo().subscribe((data) => {
       this.discListAll = data;
@@ -32,9 +34,19 @@ export class StudentGrades implements OnInit {
     this.matsArray = [...new Set(this.matsArray)];
 
     this.matsArray.splice(-2);
-
   }
-  goTo(){
-this.diaglog.open(AddStudent)
+  goTo() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.position = {
+      top: '1%',
+      left: '10%',
+
+    };
+
+    this.dialog.open(AddStudent, dialogConfig);
   }
 }

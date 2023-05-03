@@ -23,9 +23,14 @@ import { TeachDescription } from './teach-description/teach-description.componen
 import { TeachersList } from './teachers-list/teachers-list.component';
 import { StudentGrades } from './student-grades/student-grades.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { DropdownModule } from 'primeng/dropdown';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AddStudent } from './add-student/add-student.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -56,8 +61,14 @@ import { AddStudent } from './add-student/add-student.component';
     YouTubePlayerModule,
     CalendarModule,
     NoopAnimationsModule,
-    ButtonModule,
-    MatDialogModule
+    DropdownModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    DropdownModule,
+    InputNumberModule
 
   ],
   providers: [],
