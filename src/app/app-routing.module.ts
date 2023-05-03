@@ -12,6 +12,7 @@ import { Teachers } from './teachers.component/teachers.component';
 import { TeachDescription } from './teach-description/teach-description.component';
 import { TeachersList } from './teachers-list/teachers-list.component';
 import { StudentGrades } from './student-grades/student-grades.component';
+import { AddStudent } from './add-student/add-student.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -51,6 +52,11 @@ const routes: Routes = [
     component: StudentGrades,
     canActivate: [AuthGuard],
   },
+  {
+    path:'addStudent',
+    component: AddStudent,
+    canActivate: [AuthGuard],
+  }
 ];
 
 @NgModule({

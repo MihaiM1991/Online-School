@@ -22,8 +22,10 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { TeachDescription } from './teach-description/teach-description.component';
 import { TeachersList } from './teachers-list/teachers-list.component';
 import { StudentGrades } from './student-grades/student-grades.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AddStudent } from './add-student/add-student.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     TeachDescription,
     TeachersList,
     StudentGrades,
+    AddStudent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     GoogleMapsModule,
     YouTubePlayerModule,
     CalendarModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    ButtonModule,
+    MatDialogModule
 
   ],
   providers: [],
