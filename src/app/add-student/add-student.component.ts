@@ -14,5 +14,5 @@ export class AddStudent {
     { name: 'Economics' },
   ];
   selectedCity=this.cities[0];
-  value1=1;
+  value1=0;
 }
