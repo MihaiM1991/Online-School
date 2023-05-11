@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { timeTableService } from '../timetable-component/timetable.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddStudent } from '../add-student/add-student.component';
+import { HttpRequests } from '../requests.service';
+import { Student } from '../shared-folder/student.module';
+import { StudentService } from '../add-student/studentService.service';
 
 @Component({
   selector: 'app-studentGrades',
@@ -9,32 +12,24 @@ import { AddStudent } from '../add-student/add-student.component';
   styleUrls: ['./student-grades.component.scss'],
 })
 export class StudentGrades implements OnInit {
-  [x: string]: any;
-  discListAll: any;
-  test: object[] = [
-    {
-      name: 'Mihai',
-      value: 10,
-    },
-    {
-      name: 'Andrei',
-      value: 10,
-    },
-  ];
-
-  matsArray: string[] = [];
-  constructor(private discList: timeTableService, private dialog: MatDialog) {}
+  student: Student[] = [];
+  constructor(
+    private discList: timeTableService,
+    private dialog: MatDialog,
+    private get: HttpRequests,
+    private studentService: StudentService
+  ) {}
   ngOnInit(): void {
-    this.discList.getTimeTableInfo().subscribe((data) => {
-      this.discListAll = data;
-      this.matsArray = this.discListAll
-        .map((obj) => [obj.mat1, obj.mat2, obj.mat3])
-        .flat();
+    this.studentService.fetchStudents();
+    debugger
+    this.studentService.getStudents().subscribe((students) => {
+      this.student = students;
+      debugger
+      console.log(this.student);
+      debugger
     });
-    this.matsArray = [...new Set(this.matsArray)];
-
-    this.matsArray.splice(-2);
   }
+
   goTo() {
     const dialogConfig = new MatDialogConfig();
 
@@ -43,10 +38,9 @@ export class StudentGrades implements OnInit {
 
     dialogConfig.position = {
       top: '1%',
-      left: '10%',
-
+      left: '30%',
     };
-
-    this.dialog.open(AddStudent, dialogConfig);
+    dialogConfig.width = '500px';
+    const dialogRef = this.dialog.open(AddStudent, dialogConfig);
   }
 }

@@ -1,2 +1,10 @@
 
 <button mat-button color="primary" (click)="goTo()">Primary</button>
+
+<table>
+  <tr *ngFor="let data of student ">
+    <td>{{ data.name }}</td>
+    <!-- Display other student properties as needed -->
+  </tr>
+</table>
+

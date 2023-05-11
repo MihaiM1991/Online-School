@@ -27,7 +27,7 @@ export class LogginComponent {
     if (this.isLogin) {
       this.auth.loginMethod(email, password).subscribe(
         (response) => {
-          // console.log(response);
+
           this.isLoading = false;
           this.router.navigate(['/home']);
         },

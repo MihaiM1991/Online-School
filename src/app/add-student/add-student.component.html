@@ -1,40 +1,187 @@
 <body>
-  <div class="title">
-    <h1>Add New Student</h1>
+  <div mat-dialog-title class="container">
+    <h1 class="title">Add Student</h1>
   </div>
-  <div class="content">
-    <div class="row">
-      <div>
+  <mat-dialog-content class="box">
+    <form [formGroup]="form">
+      <label class="form-row">
         <input
-          pInputText
+          [class.invalid]="form.get('name').touched && form.get('name').invalid"
           type="text"
-          class="p-inputtext-sm"
-          placeholder="First Name"
-        />
-      </div>
-      <div>
-        <input
+          formControlName="name"
+          class="name"
           pInputText
-          type="text"
-          class="p-inputtext-sm"
-          placeholder="Last Name"
+          placeholder="Name:"
         />
-      </div>
-    </div>
-    <div class="row">
-      <p-dropdown
-        [options]="cities"
-        [(ngModel)]="selectedCity"
-        optionLabel="name"
+        <div
+          *ngIf="form.get('name').touched && form.get('name').invalid"
+          style="color: red"
+        >
+          Please enter a name!
+        </div>
+      </label>
 
-      ></p-dropdown>
-      <p-inputNumber inputId="integeronly" [(ngModel)]="value1" [min]="1";
-      [max]="10">
-      </p-inputNumber>
+      <label class="form-row">
+        Sport:
+        <div
+          formArrayName="sport"
+          *ngFor="let item of form.get('sport')['controls']; let i = index"
+        >
+          <div [formGroupName]="i">
+            <input
+              formControlName="grades"
+              style="width: 74px"
+              type="number"
+              min="1"
+              max="10"
+              placeholder="Grades:"
+            />
+            <input formControlName="date" placeholder="Date:dd/mm/yyyy" />
+          </div>
+        </div>
+        <div>
+          <button type="button" (click)="addInput('sport')">Add More</button>
+          <button
+            *ngIf="form.get('sport').value.length > 1"
+            type="button"
+            (click)="deteleInput('sport', i)"
+          >
+            Less
+          </button>
+        </div>
+      </label>
+
+      <label class="form-row">
+        Science:
+        <div
+          formArrayName="science"
+          *ngFor="let item of form.get('science')['controls']; let i = index"
+        >
+          <div [formGroupName]="i" class="box1">
+            <input
+              formControlName="grades"
+              style="width: 74px"
+              type="number"
+              min="1"
+              max="10"
+              placeholder="Grades:"
+            />
+            <input formControlName="date" placeholder="Date:dd/mm/yyyy" />
+          </div>
+        </div>
+        <div>
+          <button type="button" (click)="addInput('science')">Add More</button>
+          <button
+            *ngIf="form.get('science').value.length > 1"
+            type="button"
+            (click)="deteleInput('science', i)"
+          >
+            Less
+          </button>
+        </div>
+      </label>
+
+      <label class="form-row">
+        Music:
+        <div
+          formArrayName="music"
+          *ngFor="let item of form.get('music')['controls']; let i = index"
+        >
+          <div [formGroupName]="i">
+            <input
+              formControlName="grades"
+              style="width: 74px"
+              type="number"
+              min="1"
+              max="10"
+              type="number"
+              min="1"
+              max="10"
+              placeholder="Grades:"
+            />
+            <input formControlName="date" placeholder="Date:dd/mm/yyyy" />
+          </div>
+        </div>
+        <div>
+          <button type="button" (click)="addInput('music')">Add More</button>
+          <button
+            *ngIf="form.get('music').value.length > 1"
+            type="button"
+            (click)="deteleInput('music', i)"
+          >
+            Less
+          </button>
+        </div>
+      </label>
+
+      <label class="form-row">
+        History:
+        <div
+          formArrayName="history"
+          *ngFor="let item of form.get('history')['controls']; let i = index"
+        >
+          <div [formGroupName]="i">
+            <input
+              type="number"
+              min="1"
+              max="10"
+              style="width: 74px"
+              formControlName="grades"
+              placeholder="Grades:"
+            />
+            <input formControlName="date" placeholder="Date:dd/mm/yyyy" />
+          </div>
+        </div>
+        <div>
+          <button type="button" (click)="addInput('history')">Add More</button>
+          <button
+            *ngIf="form.get('history').value.length > 1"
+            type="button"
+            (click)="deteleInput('history', i)"
+          >
+            Less
+          </button>
+        </div>
+      </label>
+
+      <label class="form-row">
+        Math:
+        <div
+          formArrayName="math"
+          *ngFor="let item of form.get('math')['controls']; let i = index"
+        >
+          <div [formGroupName]="i">
+            <input
+              formControlName="grades"
+              type="number"
+              style="width: 74px"
+              min="1"
+              max="10"
+              placeholder="Grades:"
+            />
+            <input formControlName="date" placeholder="Date:dd/mm/yyyy" />
+          </div>
+        </div>
+        <div>
+          <button type="button" (click)="addInput('math')">Add More</button>
+
+          <button
+            *ngIf="form.get('math').value.length > 1"
+            type="button"
+            (click)="deteleInput('math', i)"
+          >
+            Less
+          </button>
+        </div>
+      </label>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="buttons">
+    <p-button styleClass="p-button-danger" matDialogClose>Cancel</p-button>
+    <div>
+      <p-button  (click)="onSubmit()"
+        >Save</p-button
+      >
     </div>
-  </div>
-  <div class="action">
-    <button>Cancel</button>
-    <button>Save</button>
-  </div>
+  </mat-dialog-actions>
 </body>

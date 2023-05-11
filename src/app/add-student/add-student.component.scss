@@ -1,16 +1,56 @@
 
-.row{
-  display:  flex;
-  flex-direction: row;
-padding-top: 10px;
-  gap:10px;
-}
 body{
   display: grid;
-  justify-content: center;
-  height: 400px;
+
 }
 .title{
-  height: 100px;
-  margin-bottom: -100px;
+  display: grid;
+    justify-items: center;
+
+}
+.container {
+  margin-bottom:15px;
+
+}
+.name{
+  width: 200px;
+  margin-top: 2px;
+}
+.form-row{
+  display: grid;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  gap:2px;
+  width: 250px;
+}
+.buttons{
+  display: grid;
+  justify-content: end;
+  grid-template-columns: 70px 70px;
+  gap:30px;
+  margin-right: 20px;
+}
+:host ::ng-deep .Styling-Class{
+  background-color: red;
+}
+button{
+  margin-left: 3px;
+  border:none;
+  color:white;
+  background-color:#32a1ce;
+}
+.form-row input{
+  margin-left: 2px;
+
+
+}
+input:focus {
+  border-color: #32a1ce;
+  outline: none;
+  box-shadow: inset 0 0 3px #32a1ce;
+
+
+}
+input.invalid{
+  border-color: red;
 }

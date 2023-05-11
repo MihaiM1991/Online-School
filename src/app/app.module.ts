@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LogginComponent } from './login-component/login.component';
 import { HomeComponent } from './home-component/home.component';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
 import { SpinnerComponent } from './shared-folder/spinner.component';
@@ -68,7 +68,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     MatFormFieldModule,
     MatInputModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
