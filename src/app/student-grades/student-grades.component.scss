@@ -1,18 +1,14 @@
 
-.table th{
+.btnAdd{
+  margin-top:10px;
+  justify-self: end;
+  margin-bottom: 10px;
+  width: 80px;
+}
+.add-student-dialog-container {
+  z-index: 1000;
+}
+.center{
   text-align: center;
 }
-.test{position: relative;
-width: 180px;
-display: grid;
-grid-template-columns: 45px 1fr 10px;
-grid-column-gap: 2px;
-}
-.table th{
-  text-align: center;
-}
-i{
-  position: absolute;
-  top: 4px;
-  left: 170px;
-}
+

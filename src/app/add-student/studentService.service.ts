@@ -17,18 +17,17 @@ export class StudentService {
   }
 
   addStudent(student: Student) {
-    debugger;
     this.http.post(student).subscribe((data: Student) => {
       this.students.push(data);
 
       this.studentsSubject.next(this.students);
+      this.fetchStudents();
     });
   }
 
   fetchStudents() {
     this.http.get().subscribe((data: Student[]) => {
       this.students = data;
-
       this.studentsSubject.next(this.students);
     });
   }

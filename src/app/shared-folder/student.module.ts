@@ -2,31 +2,31 @@ export interface Student {
   name: string;
   sport?: [
     {
-      grade: number;
+      grades: number;
       date: Date;
     }
   ];
   science?: [
     {
-      grade: number;
+      grades: number;
       date: Date;
     }
   ];
   music?: [
     {
-      grade: number;
+      grades: number;
       date: Date;
     }
   ];
   history?: [
     {
-      grade: number;
+      grades: number;
       date: Date;
     }
   ];
   math?: [
     {
-      grade: number;
+      grades: number;
       date: Date;
     }
   ];

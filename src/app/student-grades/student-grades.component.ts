@@ -21,12 +21,9 @@ export class StudentGrades implements OnInit {
   ) {}
   ngOnInit(): void {
     this.studentService.fetchStudents();
-    debugger
+
     this.studentService.getStudents().subscribe((students) => {
       this.student = students;
-      debugger
-      console.log(this.student);
-      debugger
     });
   }
 
@@ -37,10 +34,52 @@ export class StudentGrades implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig.position = {
-      top: '1%',
       left: '30%',
     };
     dialogConfig.width = '500px';
-    const dialogRef = this.dialog.open(AddStudent, dialogConfig);
+    dialogConfig.panelClass = 'add-student-dialog-container';
+
+    this.dialog.open(AddStudent, dialogConfig);
+  }
+  getAverageGrades(type: string, student: any) {
+    const grades = student[type]?.map((item: any) => item.grades) || [];
+    if (grades.length === 0) {
+      return 0;
+    }
+
+    let sum = 0;
+    for (const grade of grades) {
+      sum += grade;
+    }
+
+    return Math.round(sum / grades.length);
+  }
+  getAverageOfAverages(student: any): number {
+    const averages = [];
+
+    for (const subject in student) {
+      if (Array.isArray(student[subject])) {
+        const subjectGrades =
+          student[subject]?.map((item: any) => item.grades) || [];
+        if (subjectGrades.length > 0) {
+          const sum = subjectGrades.reduce(
+            (total: number, grade: number) => total + grade
+          );
+          const average = sum / subjectGrades.length;
+          averages.push(average);
+        }
+      }
+    }
+
+    if (averages.length === 0) {
+      return 0;
+    }
+
+    const totalSum = averages.reduce(
+      (total: number, average: number) => total + average
+    );
+    const totalAverage = totalSum / averages.length;
+
+    return totalAverage;
   }
 }

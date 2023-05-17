@@ -64,7 +64,7 @@ export class AddStudent implements OnInit {
     } else {
       const newStudent: Student = this.form.getRawValue();
     this.studentService.addStudent(newStudent);
-    this.studentService.fetchStudents();
+
     this.dialogRef.close();
     }
   }
