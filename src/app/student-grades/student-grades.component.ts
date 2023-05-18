@@ -6,6 +6,9 @@ import { HttpRequests } from '../requests.service';
 import { Student } from '../shared-folder/student.module';
 import { StudentService } from '../add-student/studentService.service';
 
+import html2canvas from 'html2canvas';
+import jspdf from 'jspdf';
+
 @Component({
   selector: 'app-studentGrades',
   templateUrl: './student-grades.component.html',
@@ -81,5 +84,20 @@ export class StudentGrades implements OnInit {
     const totalAverage = totalSum / averages.length;
 
     return totalAverage;
+  }
+  saveToPdf() {
+    var data = document.getElementById('table');
+    html2canvas(data).then((canvas) => {
+      let imgWidth = 208;
+      let pageHeight = 295;
+      let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      let pdf = new jspdf('p', 'mm', 'a4');
+      let position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('MYPdf.pdf'); //
+    });
   }
 }

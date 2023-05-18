@@ -1,9 +1,9 @@
 <div style="margin-top: 14px; margin-bottom: 8px">
   <p-button label="Add Student" class="btnAdd" (click)="goTo()"></p-button>
-  <p-button label="Export PDF" class="btnAdd" style="margin-left:5px" ></p-button>
+  <p-button label="Export PDF" class="btnAdd" style="margin-left:5px"(click)="saveToPdf()" ></p-button>
 </div>
 
-<p-table [value]="student" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="student" id="table" [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template pTemplate="header">
     <tr>
       <th style="text-align: center">Name</th>
