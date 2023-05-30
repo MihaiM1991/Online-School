@@ -1,6 +1,11 @@
 <div style="margin-top: 14px; margin-bottom: 8px">
   <p-button label="Add Student" class="btnAdd" (click)="goTo()"></p-button>
-  <p-button label="Export PDF" class="btnAdd" style="margin-left:5px"(click)="saveToPdf()" ></p-button>
+  <p-button
+    label="Export PDF"
+    class="btnAdd"
+    style="margin-left: 5px"
+    (click)="saveToPdf()"
+  ></p-button>
 </div>
 
 <p-table [value]="student" id="table" [tableStyle]="{ 'min-width': '50rem' }">
@@ -161,7 +166,11 @@
           </tbody>
         </table>
       </td>
-<td>{{ getAverageOfAverages(student)}}</td>
+      <td>{{ getAverageOfAverages(student) }}</td>
+      <td >
+        <p-button icon="pi pi-user" styleClass="p-button-info" class="edit" (click)="editStudent(student.id)"></p-button>
+        <p-button icon="pi pi-times" styleClass="p-button-danger" (click)="deleteStudent(student.id)" ></p-button>
+      </td>
     </tr>
   </ng-template>
 </p-table>

@@ -100,4 +100,20 @@ export class StudentGrades implements OnInit {
       pdf.save('MYPdf.pdf'); //
     });
   }
+  deleteStudent(id) {
+    this.get.delete(id).subscribe(() => this.studentService.fetchStudents());
+  }
+  editStudent(id) {
+    const dialogConfigEdit = new MatDialogConfig();
+
+    dialogConfigEdit.disableClose = true;
+    dialogConfigEdit.autoFocus = true;
+
+    dialogConfigEdit.position = {
+      left: '30%',
+    };
+    dialogConfigEdit.width = '500px';
+    dialogConfigEdit.panelClass = 'add-student-dialog-container';
+    this.dialog.open(AddStudent,dialogConfigEdit);
+  }
 }

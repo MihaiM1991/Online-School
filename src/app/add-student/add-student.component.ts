@@ -5,9 +5,7 @@ import {
   FormGroup,
   FormArray,
   Validators,
-  AbstractControl,
-  ValidatorFn,
-  ValidationErrors,
+
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 import { HttpRequests } from '../requests.service';
@@ -20,7 +18,7 @@ import { StudentService } from './studentService.service';
   styleUrls: ['./add-student.component.scss'],
 })
 export class AddStudent implements OnInit {
-  @Output() studentAdded = new EventEmitter<Student>();
+isEdit=false;
   form: FormGroup;
   i: any;
   pattern = /^[a-zA-Z ]+$/;

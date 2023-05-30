@@ -34,7 +34,7 @@ export class LogginComponent {
         (errormessages) => {
           this.isLoading = false;
           this.isError = errormessages;
-          console.log(errormessages);
+
         }
       );
     } else {
