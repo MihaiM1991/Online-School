@@ -8,6 +8,8 @@ import { HttpRequests } from '../requests.service';
 @Injectable({ providedIn: 'root' })
 export class StudentService {
   private students: Student[] = [];
+  isEdit:any;
+  id:any;
   studentsSubject = new BehaviorSubject<Student[]>([]);
 
   constructor(private http: HttpRequests) {}
@@ -30,5 +32,14 @@ export class StudentService {
       this.students = data;
       this.studentsSubject.next(this.students);
     });
+  }
+  takeStudent(data: any) {
+    this.id = data;
+
+    return this.id;
+
+  }
+  showStudentEdit(): Observable<{}> {
+    return this.id;
   }
 }

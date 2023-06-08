@@ -1,13 +1,11 @@
-import { Component,EventEmitter,Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import {
-  FormBuilder,
-  FormGroup,
-  FormArray,
-  Validators,
-
-} from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogClose, MatDialogRef } from '@angular/material/dialog';
+  MAT_DIALOG_DATA,
+  MatDialogClose,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { HttpRequests } from '../requests.service';
 import { Student } from '../shared-folder/student.module';
 import { StudentService } from './studentService.service';
@@ -18,23 +16,37 @@ import { StudentService } from './studentService.service';
   styleUrls: ['./add-student.component.scss'],
 })
 export class AddStudent implements OnInit {
-isEdit=false;
   form: FormGroup;
   i: any;
   pattern = /^[a-zA-Z ]+$/;
   student: any;
+  isEdit = false;
 
   constructor(
     private httpRequest: HttpRequests,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddStudent>,
-    private studentService:StudentService
-
+    private studentService: StudentService
   ) {}
 
   ngOnInit() {
     this.initForm();
+    if (this.studentService.showStudentEdit()) {
+      this.isEdit = true;
+      const id = this.studentService.showStudentEdit();
+      this.httpRequest.get().subscribe((data) => {
+        const student = data.find((item) => item.id === id);
+        if (student) {
+          const nameedit = student.name;
+          this.form.patchValue({
+            name:nameedit
+          })
+        }
+      });
+
+    }
   }
+
   initForm() {
     this.form = this.fb.group({
       name: [
@@ -57,13 +69,16 @@ isEdit=false;
     (<FormArray>this.form.get(type)).push(this.addFormGroup());
   }
   onSubmit() {
-    if (this.form.invalid) {
-      return;
-    } else {
-      const newStudent: Student = this.form.getRawValue();
-    this.studentService.addStudent(newStudent);
+    if (this.isEdit == false) {
+      if (this.form.invalid) {
+        return;
+      } else {
+        const newStudent: Student = this.form.getRawValue();
+        this.studentService.addStudent(newStudent);
 
-    this.dialogRef.close();
+        this.dialogRef.close();
+      }
+    } else {
     }
   }
 

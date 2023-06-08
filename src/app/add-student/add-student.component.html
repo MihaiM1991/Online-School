@@ -1,6 +1,6 @@
 <body>
   <div mat-dialog-title class="container">
-    <h1 class="title">Add Student</h1>
+    <h1 class="title">{{ isEdit ? "Edit Student" : "Add Student" }}</h1>
   </div>
   <mat-dialog-content class="box">
     <form [formGroup]="form">
@@ -179,7 +179,8 @@
   <mat-dialog-actions class="buttons">
     <p-button styleClass="p-button-danger" matDialogClose>Cancel</p-button>
     <div>
-      <p-button (click)="onSubmit()">save</p-button>
+      <p-button (click)="onSubmit()">{{ isEdit ? "Update" : "Save" }}</p-button>
     </div>
+
   </mat-dialog-actions>
 </body>

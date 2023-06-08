@@ -17,7 +17,7 @@ import jspdf from 'jspdf';
 export class StudentGrades implements OnInit {
   student: Student[] = [];
   constructor(
-    private discList: timeTableService,
+
     private dialog: MatDialog,
     private get: HttpRequests,
     private studentService: StudentService
@@ -30,7 +30,7 @@ export class StudentGrades implements OnInit {
     });
   }
 
-  goTo() {
+  goTo() {this.studentService.takeStudent(null);
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -104,6 +104,8 @@ export class StudentGrades implements OnInit {
     this.get.delete(id).subscribe(() => this.studentService.fetchStudents());
   }
   editStudent(id) {
+
+    this.studentService.takeStudent(id);
     const dialogConfigEdit = new MatDialogConfig();
 
     dialogConfigEdit.disableClose = true;
@@ -115,5 +117,6 @@ export class StudentGrades implements OnInit {
     dialogConfigEdit.width = '500px';
     dialogConfigEdit.panelClass = 'add-student-dialog-container';
     this.dialog.open(AddStudent,dialogConfigEdit);
+
   }
 }
