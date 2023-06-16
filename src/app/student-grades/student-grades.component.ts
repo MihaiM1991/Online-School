@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { timeTableService } from '../timetable-component/timetable.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddStudent } from '../add-student/add-student.component';
-import { HttpRequests } from '../requests.service';
+import { HttpRequests } from '../httprequests.service';
 import { Student } from '../shared-folder/student.module';
 import { StudentService } from '../add-student/studentService.service';
-
 import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
-
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-studentGrades',
   templateUrl: './student-grades.component.html',
   styleUrls: ['./student-grades.component.scss'],
 })
 export class StudentGrades implements OnInit {
+  gradesExample: string[] = ['History', 'Math', 'Music', 'Science', 'Sport'];
   student: Student[] = [];
   constructor(
-
+    private messageService: MessageService,
     private dialog: MatDialog,
     private get: HttpRequests,
     private studentService: StudentService
@@ -30,18 +29,16 @@ export class StudentGrades implements OnInit {
     });
   }
 
-  goTo() {this.studentService.takeStudent(null);
+  goTo() {
+    this.studentService.takeStudent(null);
     const dialogConfig = new MatDialogConfig();
-
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-
     dialogConfig.position = {
       left: '30%',
     };
     dialogConfig.width = '500px';
     dialogConfig.panelClass = 'add-student-dialog-container';
-
     this.dialog.open(AddStudent, dialogConfig);
   }
   getAverageGrades(type: string, student: any) {
@@ -89,7 +86,7 @@ export class StudentGrades implements OnInit {
     var data = document.getElementById('table');
     html2canvas(data).then((canvas) => {
       let imgWidth = 208;
-      let pageHeight = 295;
+
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
 
@@ -102,9 +99,13 @@ export class StudentGrades implements OnInit {
   }
   deleteStudent(id) {
     this.get.delete(id).subscribe(() => this.studentService.fetchStudents());
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Student Deleted',
+      detail: 'The student was deleted.',
+    });
   }
   editStudent(id) {
-
     this.studentService.takeStudent(id);
     const dialogConfigEdit = new MatDialogConfig();
 
@@ -116,7 +117,6 @@ export class StudentGrades implements OnInit {
     };
     dialogConfigEdit.width = '500px';
     dialogConfigEdit.panelClass = 'add-student-dialog-container';
-    this.dialog.open(AddStudent,dialogConfigEdit);
-
+    this.dialog.open(AddStudent, dialogConfigEdit);
   }
 }

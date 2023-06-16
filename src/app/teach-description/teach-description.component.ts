@@ -1,6 +1,12 @@
-import { Component,OnInit,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { teacherService } from '../teachers.component/teachers.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {
+  Contact,
+  teachContact,
+  TeacherDescription,
+    teachExperience,
+} from '../shared-folder/declarations';
 
 @Component({
   selector: 'app-teachDescription',
@@ -8,17 +14,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./teach-description.component.scss'],
 })
 export class TeachDescription implements OnInit {
-  teachName: any;
-  id: any;
+  teachDescription: string = TeacherDescription;
+  teachExperience: string = teachExperience;
+  teachContact: Contact = teachContact;
+  teachName: string;
+  id: string;
   constructor(private show: teacherService, private route: ActivatedRoute) {}
   ngOnInit() {
     {
       this.id = this.route.snapshot.fragment;
-      if (!this.id) {
-        this.teachName = this.show.teachName;
-      } else {
-        this.teachName = this.id;
-      }
+      this.teachName = this.id;
     }
   }
 }

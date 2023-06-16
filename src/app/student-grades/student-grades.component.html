@@ -1,5 +1,7 @@
+<p-toast></p-toast>
 <div style="margin-top: 14px; margin-bottom: 8px">
   <p-button label="Add Student" class="btnAdd" (click)="goTo()"></p-button>
+
   <p-button
     label="Export PDF"
     class="btnAdd"
@@ -9,14 +11,11 @@
 </div>
 
 <p-table [value]="student" id="table" [tableStyle]="{ 'min-width': '50rem' }">
+
   <ng-template pTemplate="header">
     <tr>
       <th style="text-align: center">Name</th>
-      <th style="text-align: center">History</th>
-      <th style="text-align: center">Math</th>
-      <th style="text-align: center">Music</th>
-      <th style="text-align: center">Science</th>
-      <th style="text-align: center">Sport</th>
+      <th style="text-align: center" *ngFor="let grades of gradesExample" >{{grades}}</th>
       <th style="text-align: center">Total</th>
       <th style="text-align: center">Actions</th>
     </tr>
@@ -24,7 +23,7 @@
   <ng-template pTemplate="body" let-student>
     <tr>
       <td style="text-align: center">{{ student.name }}</td>
-      <td>
+      <td *ngFor="let subject of gradesExample">
         <table>
           <thead>
             <tr>
@@ -33,12 +32,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let history of student.history">
-              <ng-container
-                *ngIf="history.date && history.grades; else naBlock"
-              >
-                <td style="text-align: center">{{ history.grades }}</td>
-                <td style="text-align: center">{{ history.date }}</td>
+            <tr *ngFor="let item of student[subject.toLowerCase()]">
+              <ng-container *ngIf="item.date && item.grades; else naBlock">
+                <td style="text-align: center">{{ item.grades }}</td>
+                <td style="text-align: center">{{ item.date }}</td>
               </ng-container>
               <ng-template #naBlock>
                 <td style="text-align: center">#NA</td>
@@ -48,128 +45,20 @@
             <tr>
               <th>Total</th>
               <th style="text-align: center">
-                {{ getAverageGrades("history", student) }}
+                {{ getAverageGrades(subject.toLowerCase(), student) }}
               </th>
             </tr>
           </tbody>
         </table>
       </td>
-      <td>
-        <table>
-          <thead>
-            <tr>
-              <th>Grades</th>
-              <th class="center">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let math of student.math">
-              <ng-container *ngIf="math.date && math.grades; else naBlock">
-                <td class="center">{{ math.grades }}</td>
-                <td class="center">{{ math.date }}</td>
-              </ng-container>
-              <ng-template #naBlock>
-                <td class="center">#NA</td>
-                <td class="center">#NA</td>
-              </ng-template>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <th style="text-align: center">
-                {{ getAverageGrades("math", student) }}
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-      <td>
-        <table>
-          <thead>
-            <tr>
-              <th>Grades</th>
-              <th class="center">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let music of student.music">
-              <ng-container *ngIf="music.date && music.grades; else naBlock">
-                <td class="center">{{ music.grades }}</td>
-                <td class="center">{{ music.date }}</td>
-              </ng-container>
-              <ng-template #naBlock>
-                <td class="center">#NA</td>
-                <td class="center">#NA</td>
-              </ng-template>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <th style="text-align: center">
-                {{ getAverageGrades("music", student) }}
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-      <td>
-        <table>
-          <thead>
-            <tr>
-              <th>Grades</th>
-              <th class="center">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let science of student.science">
-              <ng-container *ngIf="science.date; else naBlock">
-                <td class="center">{{ science.grades }}</td>
-                <td class="center">{{ science.date }}</td>
-              </ng-container>
-              <ng-template #naBlock>
-                <td class="center">#NA</td>
-                <td class="center">#NA</td>
-              </ng-template>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <th style="text-align: center">
-                {{ getAverageGrades("science", student) }}
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-      <td>
-        <table>
-          <thead>
-            <tr>
-              <th>Grades</th>
-              <th class="center">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let sport of student.sport">
-              <ng-container *ngIf="sport.date && sport.grades; else naBlock">
-                <td class="center">{{ sport.grades }}</td>
-                <td class="center">{{ sport.date }}</td>
-              </ng-container>
-              <ng-template #naBlock>
-                <td class="center">#NA</td>
-                <td class="center">#NA</td>
-              </ng-template>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <th style="text-align: center">
-                {{ getAverageGrades("sport", student) }}
-              </th>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-      <td>{{ getAverageOfAverages(student) }}</td>
+
+
+      <td style="text-align: center">{{ getAverageOfAverages(student) }}</td>
       <td >
-        <p-button icon="pi pi-user" styleClass="p-button-info" class="edit" (click)="editStudent(student.id)"></p-button>
-        <p-button icon="pi pi-times" styleClass="p-button-danger" (click)="deleteStudent(student.id)" ></p-button>
+
+        <i id="edit-button"class='bx bx-edit' (click)="editStudent(student.id)" style="color: rgb(149, 149, 224); font-size: 50px;"></i>
+        <i id="delete-button" class='bx bxs-message-square-x' style="color: rgb(149, 149, 224); font-size: 50px;" (click)="deleteStudent(student.id)"></i>
+
       </td>
     </tr>
   </ng-template>

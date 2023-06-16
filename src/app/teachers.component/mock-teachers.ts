@@ -1,4 +1,6 @@
-export const teacherEx = [
+import { TeacherInterfaceEx } from "../shared-folder/declarations";
+
+export const teacherEx:TeacherInterfaceEx[] = [
   {
     id: 'Math',
     name:"Pablo Escobar",

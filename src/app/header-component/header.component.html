@@ -10,7 +10,7 @@
       <p class="text">Future School</p>
     </div>
     <div class="div1">
-      <p class="about"  routerLink="/about">About</p>
+      <p class="about" routerLink="/about">About</p>
     </div>
     <div class="div2" *ngIf="isAuthenticate">
       <p class="home" routerLink="/home">Home</p>
@@ -19,11 +19,15 @@
       <p class="timetable" routerLink="/timetable">Timetable</p>
     </div>
     <div *ngIf="isAuthenticate">
-      <p class="user">{{userNew}}</p>
-
+      <p class="user">{{ userNew }}</p>
     </div>
     <div class="box-logout" *ngIf="isAuthenticate">
       <p class="logout" (click)="onLogout()">Logout</p>
     </div>
   </div>
 </body>
+<p-breadcrumb
+  *ngIf="isAuthenticate"
+  [home]="home"
+  [model]="breadcrumbs"
+></p-breadcrumb>

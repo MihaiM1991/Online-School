@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
 import { Student } from '../shared-folder/student.module';
-
-import { HttpRequests } from '../requests.service';
-
+import { HttpRequests } from '../httprequests.service';
 @Injectable({ providedIn: 'root' })
 export class StudentService {
   private students: Student[] = [];
-  isEdit:any;
-  id:any;
+  isEdit: boolean;
+  id: Student["id"];
   studentsSubject = new BehaviorSubject<Student[]>([]);
-
   constructor(private http: HttpRequests) {}
 
   getStudents(): Observable<Student[]> {
@@ -21,7 +17,6 @@ export class StudentService {
   addStudent(student: Student) {
     this.http.post(student).subscribe((data: Student) => {
       this.students.push(data);
-
       this.studentsSubject.next(this.students);
       this.fetchStudents();
     });
@@ -33,13 +28,19 @@ export class StudentService {
       this.studentsSubject.next(this.students);
     });
   }
-  takeStudent(data: any) {
+  fetchEditStudent() {
+    this.http.get().subscribe((data: Student[]) => {
+      this.students = data;
+    });
+  }
+  takeStudent(data:Student) {
     this.id = data;
-
     return this.id;
 
   }
   showStudentEdit(): Observable<{}> {
     return this.id;
   }
+
+
 }

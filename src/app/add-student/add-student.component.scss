@@ -1,56 +1,56 @@
-
-body{
+body {
   display: grid;
-
 }
-.title{
+.title {
   display: grid;
-    justify-items: center;
-
+  justify-items: center;
 }
 .container {
-  margin-bottom:15px;
-
+  margin-bottom: 15px;
 }
-.name{
+.name {
   width: 200px;
   margin-top: 2px;
 }
-.form-row{
+.form-row {
   display: grid;
   margin-top: 5px;
   margin-bottom: 5px;
-  gap:2px;
+  gap: 2px;
   width: 250px;
 }
-.buttons{
+.buttons {
   display: grid;
   justify-content: end;
   grid-template-columns: 70px 70px;
-  gap:30px;
+  gap: 30px;
   margin-right: 20px;
 }
-:host ::ng-deep .Styling-Class{
+:host ::ng-deep .Styling-Class {
   background-color: red;
 }
-button{
+button {
   margin-left: 3px;
-  border:none;
-  color:white;
-  background-color:#32a1ce;
+  border: none;
+  color: white;
+  background-color: #32a1ce;
 }
-.form-row input{
+.form-row input {
   margin-left: 2px;
-
-
 }
 input:focus {
   border-color: #32a1ce;
   outline: none;
   box-shadow: inset 0 0 3px #32a1ce;
-
-
 }
-input.invalid{
+input.invalid {
   border-color: red;
+}
+.custom-toast {
+  margin-top: 10px;
+  color: red;
+}
+
+.invalid {
+  border: 1px solid red;
 }

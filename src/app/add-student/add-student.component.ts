@@ -1,14 +1,12 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogClose,
-  MatDialogRef,
-} from '@angular/material/dialog';
-import { HttpRequests } from '../requests.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { HttpRequests } from '../httprequests.service';
 import { Student } from '../shared-folder/student.module';
 import { StudentService } from './studentService.service';
+import { MessageService } from 'primeng/api';
+
+import { grades, pattern, patternDate } from '../shared-folder/declarations';
 
 @Component({
   selector: 'app-my-form',
@@ -16,13 +14,17 @@ import { StudentService } from './studentService.service';
   styleUrls: ['./add-student.component.scss'],
 })
 export class AddStudent implements OnInit {
+  grades: string[] = grades;
   form: FormGroup;
-  i: any;
-  pattern = /^[a-zA-Z ]+$/;
-  student: any;
-  isEdit = false;
+  index: number;
+  currentId: string;
+  pattern:RegExp   = pattern;
+  student: Student;
+  isEdit:boolean = false;
+  paternDate:string =patternDate;
 
   constructor(
+    private messageService: MessageService,
     private httpRequest: HttpRequests,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddStudent>,
@@ -31,20 +33,40 @@ export class AddStudent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.editFunction();
+  }
+  editFunction() {
     if (this.studentService.showStudentEdit()) {
       this.isEdit = true;
       const id = this.studentService.showStudentEdit();
       this.httpRequest.get().subscribe((data) => {
         const student = data.find((item) => item.id === id);
         if (student) {
+          this.currentId = student.id;
           const nameedit = student.name;
           this.form.patchValue({
-            name:nameedit
-          })
+            name: nameedit,
+          });
+          grades.forEach((subject) => {
+            if (student[subject]) {
+              this.form.setControl(subject, this.setExisting(student[subject]));
+            }
+          });
         }
       });
-
     }
+  }
+  setExisting(name) {
+    const sportGroup = new FormArray([]);
+    name.forEach((item) => {
+      sportGroup.push(
+        this.fb.group({
+          grades: item.grades,
+          date: item.date,
+        })
+      );
+    });
+    return sportGroup;
   }
 
   initForm() {
@@ -71,25 +93,58 @@ export class AddStudent implements OnInit {
   onSubmit() {
     if (this.isEdit == false) {
       if (this.form.invalid) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Please check',
+        });
         return;
       } else {
         const newStudent: Student = this.form.getRawValue();
         this.studentService.addStudent(newStudent);
 
         this.dialogRef.close();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Student Added',
+          detail: 'New student has been added.',
+        });
       }
     } else {
+      const newStudentUpdated: Student = this.form.getRawValue();
+      this.httpRequest
+        .updateStudent(this.currentId, newStudentUpdated)
+        .subscribe(() => {
+          this.dialogRef.close();
+          this.studentService.fetchStudents();
+        });
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Edit Student',
+        detail: 'The student has been edit.',
+      });
     }
   }
 
   addFormGroup(): FormGroup {
     return this.fb.group({
       grades: ['', [Validators.min(1), Validators.max(10)]],
-      date: ['', [Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)]],
+      date: ['', [Validators.pattern(this.paternDate)]],
     });
   }
 
   deteleInput(type: string, index: number) {
     (<FormArray>this.form.get(type)).removeAt(index);
+  }
+  closeMessages() {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'No actions was performed ',
+    });
+  }
+  getFormControlClass(controlName: string) {
+    const control = this.form.get(controlName);
+    return control.touched ? 'invalid' : '';
   }
 }

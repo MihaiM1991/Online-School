@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MapService } from './google.maps.service';
+import { contactSchool, description, purpose } from './mock-about';
+import { Display } from '../shared-folder/declarations';
 
 @Component({
   selector: 'app-about',
@@ -10,8 +12,14 @@ export class AboutComponent implements OnInit {
   show: boolean = false;
   isShow: boolean = false;
   isLocated: boolean = false;
+  center = this.mapsService.center;
+  zoom = this.mapsService.zoom;
+  display: Display;
+  schoolDescription:string=description;
+  schoolPurpose:string=purpose;
+  contact=contactSchool;
 
-  constructor() {}
+  constructor(private mapsService: MapService) {}
   ngOnInit(): void {
     this.onSelect();
     this.onPurpose();
@@ -40,17 +48,13 @@ export class AboutComponent implements OnInit {
       this.show = true;
     }
   }
-  display: any;
-  center: google.maps.LatLngLiteral = { lat: 44.44, lng: 26.22 };
-  zoom = 10;
 
   moveMap(event: google.maps.MapMouseEvent) {
-    if (event.latLng != null) this.center = event.latLng.toJSON();
+    this.mapsService.moveMap(event);
   }
 
   move(event: google.maps.MapMouseEvent) {
-    if (event.latLng != null) this.display = event.latLng.toJSON();
+    this.mapsService.move(event);
+    this.display = event.latLng.toJSON();
   }
-  markerOptions: google.maps.MarkerOptions = { draggable: false };
-  markerPositions: google.maps.LatLngLiteral[] = [];
 }

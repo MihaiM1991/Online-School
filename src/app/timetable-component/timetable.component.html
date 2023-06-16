@@ -3,11 +3,7 @@
     <ng-template pTemplate="header">
       <tr>
         <th class="col">Time</th>
-        <th class="col">Monday</th>
-        <th class="col">Tuesday</th>
-        <th class="col">Wednsesday</th>
-        <th class="col">Thursday</th>
-        <th class="col">Friday</th>
+        <th class="col" *ngFor="let day of daysOfWeek">{{ day }}</th>
       </tr>
     </ng-template>
 
@@ -33,3 +29,8 @@
     </ng-template>
   </p-table>
 </body>
+<div>
+  <Button class="text">test
+
+  </Button>
+</div>

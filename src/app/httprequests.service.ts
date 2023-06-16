@@ -4,10 +4,9 @@ import { catchError, exhaustMap, map, take } from 'rxjs';
 import { Student } from './shared-folder/student.module';
 import { AuthService } from './shared-folder/auth.service';
 
-
 @Injectable({ providedIn: 'root' })
 export class HttpRequests {
-  constructor(private http: HttpClient, private auth: AuthService,) {}
+  constructor(private http: HttpClient, private auth: AuthService) {}
   post(requestBody: Student) {
     return this.auth.userNew.pipe(
       take(1),
@@ -46,7 +45,7 @@ export class HttpRequests {
   }
 
   delete(id: string) {
-     return this.auth.userNew.pipe(
+    return this.auth.userNew.pipe(
       take(1),
       exhaustMap((user) => {
         return this.http.delete(
@@ -56,7 +55,15 @@ export class HttpRequests {
             user.tokenValue
         );
       })
-    )
-  }}
-
-
+    );
+  }
+  updateStudent(id:string,student: Student) {
+    return this.auth.userNew.pipe(
+      take(1),
+      exhaustMap((user) => {
+        const url = `https://mihai-test-a6972-default-rtdb.firebaseio.com/Students/` +id +`.json?auth=`+ user.tokenValue;
+        return this.http.put(url, student);
+      })
+    );
+  }
+}

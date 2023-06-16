@@ -1,7 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { teacherService } from '../teachers.component/teachers.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-teachersList',
@@ -9,18 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./teachers-list.component.scss'],
 })
 export class TeachersList implements OnInit {
-  showTeachName:any;
-  abc:any;
-  constructor(private listTeacher:teacherService,private router:Router){}
+  showTeachName: any;
+  abc: any;
+  constructor(private listTeacher: teacherService, private router: Router) {}
   ngOnInit(): void {
-this.listTeacher.listTeacher().subscribe((data) =>
-{
-  this.showTeachName=data;
-
-});
+    this.listTeacher.listTeacher().subscribe((data) => {
+      this.showTeachName = data;
+    });
   }
-  goTo(test){
-
-this.router.navigate(['name'],{fragment:test});
+  goTo(name:string) {
+    this.router.navigate(['name'], { fragment: name });
   }
 }

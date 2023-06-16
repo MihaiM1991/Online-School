@@ -2,7 +2,7 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-.welcomeBox {
+.welcome-box {
   padding: 10px;
   overflow: hidden;
 }
@@ -17,7 +17,7 @@ body {
   margin-bottom: 50px;
   border-bottom: thick double #32a1ce;
 }
-.welcomeText {
+.welcome-text {
   overflow: auto;
   text-align: center;
 
@@ -43,11 +43,11 @@ body {
   .box {
     grid-template-columns: 1fr;
   }
-  .secondBox {
+  .second-box {
     grid-template-columns: 1fr;
   }
 }
-.secondBox {
+.second-box {
   margin-top: 100px;
 
   display: grid;
@@ -61,7 +61,7 @@ body {
   height: 400px;
   background-color: aliceblue;
 }
-.teacherfoto {
+.teacher-foto {
   display: grid;
   height: 220px;
   width: 100%;
@@ -75,7 +75,7 @@ body {
   display: grid;
   justify-content: center;
 }
-.aboutTeacher {
+.about-teacher {
   font-size: 30px;
 }
 .about:hover {

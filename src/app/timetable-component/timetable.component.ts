@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import 'jspdf-autotable';
 import { timeTableService } from './timetable.service';
-import {  Router } from '@angular/router';
-import { schoolSubjectService } from '../school subject/schoolsubject.service';
+import { Router } from '@angular/router';
+
+import { DisciplinesExample, daysOfWeek } from '../shared-folder/declarations';
 
 @Component({
   selector: 'app-timetable',
@@ -12,12 +11,14 @@ import { schoolSubjectService } from '../school subject/schoolsubject.service';
   styleUrls: ['./timetable.component.scss'],
 })
 export class TimeTable implements OnInit {
-  discExample;
-  test;
+  daysOfWeek: string[] = daysOfWeek;
+  discExample:DisciplinesExample[]=[]
+
+
   constructor(
     private disciplines: timeTableService,
     private router: Router,
-    private getData: schoolSubjectService
+
   ) {}
 
   ngOnInit() {
@@ -27,12 +28,17 @@ export class TimeTable implements OnInit {
     });
   }
   goToDisciplines($event, abc) {
-if(abc =="Sport" || abc=="Science" || abc=="Math" || abc=="History" || abc=="Economics") {
-    this.router.navigate(['/school-subjects'],{fragment: abc });
-    this.getData.takeSchoolSubject(abc);
-}
-else {
-  return;
-}
+    if (
+      abc == 'Sport' ||
+      abc == 'Science' ||
+      abc == 'Math' ||
+      abc == 'History' ||
+      abc == 'Economics'
+    ) {
+      this.router.navigate(['/school-subjects'], { fragment: abc });
+
+    } else {
+      return;
+    }
   }
 }

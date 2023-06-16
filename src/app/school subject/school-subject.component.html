@@ -1,6 +1,6 @@
 <body>
-  <div class="welcomeBox" >
-    <p class="welcomeText">Welcome to {{ showSchObj }} class</p>
+  <div class="welcome-box" >
+    <p class="welcome-text">Welcome to {{ showSchObj }} class</p>
   </div>
   <div class="box">
     <div class="box1">
@@ -33,37 +33,29 @@
     <div class="box2">
       <div class="description">Description</div>
       <div>
-        School subjects refer to the different academic disciplines that are
-        taught in schools, colleges, and universities. These disciplines are
-        designed to help students develop knowledge and skills in different
-        areas of study. School subjects are often divided into different levels,
-        such as elementary school, middle school, and high school, with each
-        level building upon the knowledge and skills developed in the previous
-        level. Additionally, some school subjects are required for graduation,
-        while others are electives that students can choose based on their
-        interests and career goals.
+        {{schoolSubjectDescription}}
       </div>
 
       <div class="intro">Introduction</div>
       <div>{{ showDescription }}</div>
     </div>
   </div>
-  <div class="secondBox">
+  <div class="second-box">
     <div class="teachers">
       <div>
-        <img class="teacherfoto" src="assets/teacher.jpg" />
+        <img class="teacher-foto" src="assets/teacher.jpg" />
       </div>
       <div class="about" (click)="goToTeachers($event,showSchObj)">
-        <p class="aboutTeacher"> {{ showSchObj }} Teacher</p>
+        <p class="about-teacher"> {{ showSchObj }} Teacher</p>
 
       </div>
     </div>
     <div class="info">
       <div>
-        <img class="teacherfoto" src="assets/grades.jpg" />
+        <img class="teacher-foto" src="assets/grades.jpg" />
       </div>
       <div class="about">
-        <p class="aboutTeacher">Students grades </p>
+        <p class="about-teacher" [routerLink]="'/grades'" >Students grades </p>
       </div>
     </div>
   </div>

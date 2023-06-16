@@ -10,7 +10,7 @@ import * as CryptoJS from 'crypto-js';
 export class AuthService {
   userName: User = null;
   private tokenExpirationTimer: any;
-  test:any;
+  test: any;
   userNew = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private route: Router) {}
   signUp(email: string, password: string) {
@@ -20,7 +20,7 @@ export class AuthService {
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
-        catchError(this.chechError),
+        catchError(this.checkError),
         tap((response) => {
           const expirationDate = new Date(
             new Date().getTime() + +response.expiresIn * 1000
@@ -43,7 +43,7 @@ export class AuthService {
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
-        catchError(this.chechError),
+        catchError(this.checkError),
         tap((response) => {
           const expirationDate = new Date(
             new Date().getTime() + +response.expiresIn * 1000
@@ -59,7 +59,7 @@ export class AuthService {
           this.autoLogout(+response.expiresIn * 1000);
 
           const dataString = JSON.stringify(user);
-          const key = 'my-secret-key';
+          const key = 'nudauparola';
           const encryptedData = CryptoJS.AES.encrypt(
             dataString,
             key
@@ -70,7 +70,7 @@ export class AuthService {
   }
   autoLogin() {
     const encryptedData = localStorage.getItem('encryptedData');
-    const key = 'my-secret-key';
+    const key = 'nudauparola';
     const decryptedData = CryptoJS.AES.decrypt(encryptedData, key).toString(
       CryptoJS.enc.Utf8
     );
@@ -98,7 +98,6 @@ export class AuthService {
     }
   }
   logout() {
-
     this.userNew.next(null);
     this.route.navigate(['/login']);
     localStorage.removeItem('encryptedData');
@@ -108,12 +107,12 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
   autoLogout(expirationTime: number) {
-    this.test=expirationTime;
+
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationTime);
   }
-  private chechError(errorRespons: HttpErrorResponse) {
+  private checkError(errorRespons: HttpErrorResponse) {
     let errormessages = 'An unknown error occured';
     if (!errorRespons.error || !errorRespons.error.error) {
       return throwError(errormessages);
@@ -131,16 +130,16 @@ export class AuthService {
     return throwError(errormessages);
   }
 
-  private handleAuthentication(
-    email: string,
-    userId: string,
-    token: string,
-    expiresIn: number
-  ) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
-    this.userNew.next(user);
+  // private handleAuthentication(
+  //   email: string,
+  //   userId: string,
+  //   token: string,
+  //   expiresIn: number
+  // ) {
+  //   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+  //   const user = new User(email, userId, token, expirationDate);
+  //   this.userNew.next(user);
 
-    localStorage.setItem('userData', JSON.stringify(user));
-  }
+  //   localStorage.setItem('userData', JSON.stringify(user));
+  // }
 }

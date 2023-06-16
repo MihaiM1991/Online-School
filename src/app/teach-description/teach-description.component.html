@@ -5,7 +5,7 @@
 <body>
   <div class="box">
     <div class="box1">
-      <div class="personalData">
+      <div class="personal-data">
         <p>Details</p>
       </div>
       <div class="introduction">
@@ -17,12 +17,12 @@
     </div>
     <div class="box2">
       <div class="name">
-        <div class="teachName">
+        <div class="teach-name">
           <p>{{ teachName }}</p>
         </div>
         <div class="email">
           <p class="test">
-            Email: <span>test@test.com</span>
+            Email: <span>{{teachContact.email}}</span>
             <i
               style="position: relative; top: 3px; right: -3px; width: 40px"
               class="bx bx-envelope"
@@ -30,63 +30,25 @@
           </p>
         </div>
         <div class="phone">
-          <p>Phone Number: <span>0749 xxx xxx</span></p>
+          <p>Phone Number: <span>{{teachContact.phone}}</span></p>
           <i
             class="bx bxs-phone"
             style="position: relative; top: -32px; right: -282px; width: 40px"
           ></i>
         </div>
       </div>
-      <div class="teachDescription">
+      <div class="teach-description">
         <p>
-          I am excited to introduce myself as a passionate and experienced
-          educator, eager to contribute my skills and expertise to your
-          institution. With ten years of teaching experience, I have developed a
-          deep understanding of effective instructional methods, curriculum
-          design, and student engagement strategies.I hold a certification in
-          [subject], and have experience teaching [age range/subject] in both
-          [previous schools/institutions]. As a dedicated teacher, I believe in
-          the power of education to transform lives, and am committed to helping
-          my students achieve their full potential. I strive to create a
-          positive, student-centered classroom environment where all learners
-          feel valued and supported.My teaching philosophy centers around the
-          belief that every student has the capacity to learn and succeed, and
-          that it is my responsibility to help them unlock their potential. I
-          approach teaching with creativity and innovation, using a variety of
-          instructional methods to engage students and help them connect with
-          the material. I am also passionate about fostering critical thinking
-          and problem-solving skills, which I believe are essential for success
-          in the 21st century.In addition to my teaching experience, I have also
-          [relevant experience/skills]. These experiences have helped me develop
-          strong communication, collaboration, and leadership skills, which I
-          believe are essential for success as an educator.
+          {{ teachDescription }}
         </p>
       </div>
-      <div class="teachCv">
+      <div class="teach-cv">
         <p class="first">
           [School/Institution Name], [Location] [Position], [Years of
           Employment]
         </p>
         <p class="second">
-          Taught [subject/grade level] to a diverse student population, using a
-          range of teaching strategies and resources to meet individual needs.
-          Developed and implemented curriculum in line with school and district
-          goals, and regularly reviewed and revised materials based on student
-          outcomes. Fostered a positive classroom environment, where students
-          felt safe, supported, and motivated to learn. Worked collaboratively
-          with colleagues and administrators to support school-wide initiatives
-          and promote student success. Attended and presented at professional
-          development opportunities, to stay up-to-date with best practices in
-          teaching and learning. Provided instruction in [subject/grade level],
-          using a variety of teaching methods to engage students and enhance
-          learning outcomes. Collaborated with colleagues to develop and
-          implement school-wide initiatives, such as literacy and numeracy
-          programs, and technology integration. Monitored student progress
-          through ongoing assessment, and provided feedback to students and
-          parents on a regular basis. Contributed to the school community
-          through participation in extracurricular activities, such as coaching,
-          clubs, and committees. Attended professional development opportunities
-          to enhance knowledge and skills in teaching and learning.
+          {{ teachExperience }}
         </p>
       </div>
     </div>

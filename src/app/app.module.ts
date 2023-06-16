@@ -31,6 +31,13 @@ import { AddStudent } from './add-student/add-student.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -69,10 +76,18 @@ import { InputNumberModule } from 'primeng/inputnumber';
     MatInputModule,
     DropdownModule,
     InputNumberModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule,
+    BreadcrumbModule
+
+
+
+
+
+
 
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

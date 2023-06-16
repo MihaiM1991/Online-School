@@ -28,7 +28,7 @@ body {
   width: 90%;
   justify-self: center;
 }
-.teachName {
+.teach-name {
   box-shadow: inset 0 0 15px #e3e4ee;
   display: grid;
   grid-column-start: 1;
@@ -47,7 +47,7 @@ body {
   grid-column-start: 1;
   box-shadow: inset 0 0 15px #e3e4ee;
 }
-.teachName p {
+.teach-name p {
   font-weight: bold;
   display: grid;
   justify-content: center;
@@ -63,28 +63,17 @@ span {
   width: 100px;
   color: rgb(8, 46, 84);
 }
-@media only screen and (min-width: 993px) and (max-width: 1300px) {
-  .box {
 
 
-  }
-
-}
-@media only screen and (min-width: 510px) and (max-width: 993px) {
-  .box {
-
-  }
-
-}
 .box1{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr
 }
-.personalData{padding-bottom: 120px;
+.personal-data{padding-bottom: 120px;
   place-self: center;
   display: grid;
 }
-.personalData p{text-align: center;
+.personal-data p{text-align: center;
   border-radius: 20px;
   font-size: 25px;
   font-weight: bold;
@@ -128,16 +117,16 @@ span {
   display: grid;
 
 }
-.teachCv{
+.teach-cv{
   padding: 10px;
 
 
   margin-top: 37px;
 }
-.teachDescription{
+.teach-description{
   margin-top: 94px;
 }
-.teachDescription p{width: 90%;
+.teach-description p{width: 90%;
   margin-left: 39px;
   padding: 10px;
   box-shadow: inset 0 0 15px #e3e4ee;

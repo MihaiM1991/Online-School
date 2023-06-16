@@ -1,15 +1,15 @@
 <body>
   <div class="box">
     <div class="box1">
-      <div clas="aboutBox">
+      <div clas="about-box">
         <p class="about">
           Teachers play a critical role in shaping the intellectual and personal
           development of their students.
         </p>
       </div>
       <div class="description">
-        <p class="textDesc">About {{ showTeach }} teacher</p>
-        <div *ngIf="showText" class="textClass">
+        <p class="text-desc">About {{ showTeach }} teacher</p>
+        <div *ngIf="showText" class="text-class">
           <p>{{ showTeachDesc }}</p>
         </div>
         <div *ngIf="!showText">
@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class="box2">
-      <div class="firstPhoto">
-        <img class="teacherfoto" src="assets/teach1.jpg" />
-        <div class="teachName">
+      <div class="first-photo">
+        <img class="teacher-foto" src="assets/teach1.jpg" />
+        <div class="teach-name">
           <p class="a">{{ showName }}</p>
           <p class="b">{{ showTeach }} Teacher</p>
           <p-button
@@ -35,7 +35,7 @@
           ></p-button>
         </div>
       </div>
-      <div class="firstVideo">
+      <div class="firstvideo">
         <youtube-player
           videoId="Ld5X3C_8OdM"
           [height]="200"
@@ -44,7 +44,7 @@
         >
         </youtube-player>
       </div>
-      <div class="secondVideo">
+      <div class="second-video">
         <youtube-player
           videoId="Xh7lrudBzh8"
           [height]="200"

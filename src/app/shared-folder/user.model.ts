@@ -14,3 +14,4 @@ export class User {
     return this.idToken;
   }
 }
+
