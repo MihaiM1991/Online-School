@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import 'jspdf-autotable';
 import { timeTableService } from './timetable.service';
 import { Router } from '@angular/router';
-
 import { DisciplinesExample, daysOfWeek } from '../shared-folder/declarations';
 
 @Component({
@@ -12,19 +11,13 @@ import { DisciplinesExample, daysOfWeek } from '../shared-folder/declarations';
 })
 export class TimeTable implements OnInit {
   daysOfWeek: string[] = daysOfWeek;
-  discExample:DisciplinesExample[]=[]
+  discExample: DisciplinesExample[] = [];
 
-
-  constructor(
-    private disciplines: timeTableService,
-    private router: Router,
-
-  ) {}
+  constructor(private disciplines: timeTableService, private router: Router) {}
 
   ngOnInit() {
     this.disciplines.getTimeTableInfo().subscribe((data) => {
       this.discExample = data;
-
     });
   }
   goToDisciplines($event, abc) {
@@ -36,7 +29,6 @@ export class TimeTable implements OnInit {
       abc == 'Economics'
     ) {
       this.router.navigate(['/school-subjects'], { fragment: abc });
-
     } else {
       return;
     }

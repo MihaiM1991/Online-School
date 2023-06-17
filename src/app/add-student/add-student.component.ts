@@ -18,10 +18,10 @@ export class AddStudent implements OnInit {
   form: FormGroup;
   index: number;
   currentId: string;
-  pattern:RegExp   = pattern;
+  pattern: RegExp = pattern;
   student: Student;
-  isEdit:boolean = false;
-  paternDate:string =patternDate;
+  isEdit: boolean = false;
+  paternDate: string = patternDate;
 
   constructor(
     private messageService: MessageService,
@@ -129,7 +129,7 @@ export class AddStudent implements OnInit {
   addFormGroup(): FormGroup {
     return this.fb.group({
       grades: ['', [Validators.min(1), Validators.max(10)]],
-      date: ['', [Validators.pattern(this.paternDate)]],
+      date: ['', [Validators.pattern(patternDate)]],
     });
   }
 

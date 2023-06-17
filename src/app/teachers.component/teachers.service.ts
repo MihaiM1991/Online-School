@@ -3,8 +3,10 @@ import { Observable, of } from 'rxjs';
 import { teacherEx } from './mock-teachers';
 import { TeacherInterfaceEx } from '../shared-folder/declarations';
 
+
 @Injectable({ providedIn: 'root' })
 export class teacherService {
+
   listName: TeacherInterfaceEx[] | undefined;
   teacher: TeacherInterfaceEx | undefined;
   teachName: TeacherInterfaceEx | undefined;

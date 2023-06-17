@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared-folder/auth.service';
 
@@ -10,8 +10,8 @@ import { AuthService } from '../shared-folder/auth.service';
 })
 export class LogginComponent {
   constructor(private auth: AuthService, private router: Router) {}
-  isLogin = true;
-  isLoading = false;
+  isLogin: boolean = true;
+  isLoading: boolean = false;
   isError: string = '';
   onSwitch() {
     this.isLogin = !this.isLogin;
@@ -27,20 +27,17 @@ export class LogginComponent {
     if (this.isLogin) {
       this.auth.loginMethod(email, password).subscribe(
         (response) => {
-
           this.isLoading = false;
           this.router.navigate(['/home']);
         },
         (errormessages) => {
           this.isLoading = false;
           this.isError = errormessages;
-
         }
       );
     } else {
       this.auth.signUp(email, password).subscribe(
         (response) => {
-          // console.log(response);
           this.isLoading = false;
           this.router.navigate(['/home']);
         },

@@ -8,7 +8,7 @@ export interface Contact {
   email: string;
 }
 export const pattern: RegExp = /^[a-zA-Z ]+$/;
-export const patternDate: string = '/^d{2}/d{2}/d{4}$/';
+export const patternDate: string = '^\\d{2}/\\d{2}/\\d{4}$';
 export interface SchoolSubjectInterface {
   id?: number;
   name?: string;

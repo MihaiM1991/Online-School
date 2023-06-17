@@ -19,16 +19,17 @@ export class SchoolSubject implements OnInit {
     private show: schoolSubjectService,
     private route: ActivatedRoute,
     private router: Router,
-    private showTeacher: teacherService
+
   ) {}
   ngOnInit() {
     this.id = this.route.snapshot.fragment;
+
     this.showSchObj = this.id;
     this.showDescription = this.show.showSubjectDescription(this.id);
+
   }
 
   goToTeachers($event, abc) {
     this.router.navigate(['/teachers'], { fragment: abc });
-
   }
 }

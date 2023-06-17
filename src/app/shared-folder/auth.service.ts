@@ -11,12 +11,14 @@ export class AuthService {
   userName: User = null;
   private tokenExpirationTimer: any;
   test: any;
+  url1:string='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWn4XOHAeqa7iCVmHCD44liu1Lnd9E7Io'
+  url:string='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWn4XOHAeqa7iCVmHCD44liu1Lnd9E7Io'
   userNew = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private route: Router) {}
   signUp(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWn4XOHAeqa7iCVmHCD44liu1Lnd9E7Io',
+        this.url,
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
@@ -39,7 +41,7 @@ export class AuthService {
   loginMethod(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWn4XOHAeqa7iCVmHCD44liu1Lnd9E7Io',
+        this.url1,
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(

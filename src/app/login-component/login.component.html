@@ -13,7 +13,7 @@
         *ngIf="isError"
         (close)="isError = ''"
       ></app-alert>
-      <div class="firstBox">
+      <div class="first-box">
         <h1>
           <span>School it's about:</span>
 
@@ -24,7 +24,7 @@
           </div>
         </h1>
       </div>
-      <div class="secondBox">
+      <div class="second-box">
         <div class="containter">
           <div class="header">
             <header>{{ isLogin ? "Login" : "Sign Up" }}</header>
@@ -65,11 +65,11 @@
               <i class="bx bx-shield-quarter"></i>
             </div>
 
-            <div class="inputForm">
+            <div class="input-form">
               <button id="test" type="submit" [disabled]="!authForm.valid">
                 {{ isLogin ? "Login" : " Sign Up" }}
               </button>
-              <button type="button" class="submitSignUp" (click)="onSwitch()">
+              <button type="button" class="submit-sign-up" (click)="onSwitch()">
                 Switch to {{ isLogin ? "Sign Up" : "Login" }}
               </button>
             </div>

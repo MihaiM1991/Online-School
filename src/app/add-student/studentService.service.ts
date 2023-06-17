@@ -6,7 +6,9 @@ import { HttpRequests } from '../httprequests.service';
 export class StudentService {
   private students: Student[] = [];
   isEdit: boolean;
-  id: Student["id"];
+  data: any;
+  item: any;
+  id: Student['id'];
   studentsSubject = new BehaviorSubject<Student[]>([]);
   constructor(private http: HttpRequests) {}
 
@@ -33,14 +35,11 @@ export class StudentService {
       this.students = data;
     });
   }
-  takeStudent(data:Student) {
+  takeStudent(data: Student) {
     this.id = data;
     return this.id;
-
   }
   showStudentEdit(): Observable<{}> {
     return this.id;
   }
-
-
 }

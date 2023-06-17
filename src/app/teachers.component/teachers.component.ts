@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { teacherService } from './teachers.service';
 import { TeacherInterfaceEx } from '../shared-folder/declarations';
+import { schoolSubjectService } from '../school subject/schoolsubject.service';
 
 @Component({
   selector: 'app-teachers',
@@ -19,7 +20,8 @@ export class Teachers implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private show: teacherService,
-    private router: Router
+    private router: Router,
+    private test:schoolSubjectService
   ) {}
 
   ngOnInit() {
