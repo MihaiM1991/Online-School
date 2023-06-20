@@ -9,4 +9,9 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
+.then(() => {
+  const scriptTag = document.createElement('script');
+  scriptTag.src = environment.apiGoogle;
+  document.head.appendChild(scriptTag);
+})
   .catch(err => console.error(err));

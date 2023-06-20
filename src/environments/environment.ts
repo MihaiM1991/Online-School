@@ -6,7 +6,8 @@ export const environment = {
   production: true,
   apiKey: secrets.apiKey,
   apiSecret: secrets.apiSecret,
-  apiFirebase:secrets.apiFireBase
+  apiFirebase:secrets.apiFireBase,
+  apiGoogle:secrets.apiGoogle
 };
 
 /*
