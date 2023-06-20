@@ -6,21 +6,23 @@ import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
+import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   userName: User = null;
   private tokenExpirationTimer: any;
   test: any;
-  url1:string='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWn4XOHAeqa7iCVmHCD44liu1Lnd9E7Io'
-  url:string='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWn4XOHAeqa7iCVmHCD44liu1Lnd9E7Io'
+  url1: string = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`;
+  url: string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`;
   userNew = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private route: Router) {}
   signUp(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
-        this.url,
-        { email: email, password: password, returnSecureToken: true }
-      )
+      .post<AuthResponseData>(this.url, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
         catchError(this.checkError),
         tap((response) => {
@@ -40,10 +42,11 @@ export class AuthService {
 
   loginMethod(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
-        this.url1,
-        { email: email, password: password, returnSecureToken: true }
-      )
+      .post<AuthResponseData>(this.url1, {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      })
       .pipe(
         catchError(this.checkError),
         tap((response) => {
@@ -56,12 +59,11 @@ export class AuthService {
             response.idToken,
             expirationDate
           );
-          this.userNew.next(user);
-          this.userName = user;
-          this.autoLogout(+response.expiresIn * 1000);
 
+          this.userNew.next(user);
+          this.autoLogout(+response.expiresIn * 1000);
           const dataString = JSON.stringify(user);
-          const key = 'nudauparola';
+          const key = environment.apiSecret;
           const encryptedData = CryptoJS.AES.encrypt(
             dataString,
             key
@@ -72,7 +74,7 @@ export class AuthService {
   }
   autoLogin() {
     const encryptedData = localStorage.getItem('encryptedData');
-    const key = 'nudauparola';
+    const key = environment.apiSecret;
     const decryptedData = CryptoJS.AES.decrypt(encryptedData, key).toString(
       CryptoJS.enc.Utf8
     );
@@ -109,7 +111,6 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
   autoLogout(expirationTime: number) {
-
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationTime);
@@ -131,17 +132,4 @@ export class AuthService {
     }
     return throwError(errormessages);
   }
-
-  // private handleAuthentication(
-  //   email: string,
-  //   userId: string,
-  //   token: string,
-  //   expiresIn: number
-  // ) {
-  //   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-  //   const user = new User(email, userId, token, expirationDate);
-  //   this.userNew.next(user);
-
-  //   localStorage.setItem('userData', JSON.stringify(user));
-  // }
 }

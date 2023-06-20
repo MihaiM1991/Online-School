@@ -7,13 +7,14 @@ import { StudentService } from '../add-student/studentService.service';
 import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
 import { MessageService } from 'primeng/api';
+import { grades } from '../shared-folder/declarations';
 @Component({
   selector: 'app-studentGrades',
   templateUrl: './student-grades.component.html',
   styleUrls: ['./student-grades.component.scss'],
 })
 export class StudentGrades implements OnInit {
-  gradesExample: string[] = ['History', 'Math', 'Music', 'Science', 'Sport'];
+  gradesExample: string[] = grades;
   student: Student[] = [];
   constructor(
     private messageService: MessageService,
@@ -86,10 +87,7 @@ export class StudentGrades implements OnInit {
     var data = document.getElementById('table');
     html2canvas(data).then((canvas) => {
       let imgWidth = 208;
-
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-
       const contentDataURL = canvas.toDataURL('image/png');
       let pdf = new jspdf('p', 'mm', 'a4');
       let position = 0;
@@ -97,7 +95,7 @@ export class StudentGrades implements OnInit {
       pdf.save('MYPdf.pdf'); //
     });
   }
-  deleteStudent(id) {
+  deleteStudent(id:string) {
     this.get.delete(id).subscribe(() => this.studentService.fetchStudents());
     this.messageService.add({
       severity: 'success',

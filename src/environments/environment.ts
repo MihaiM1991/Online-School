@@ -1,9 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+import { secrets } from '../app/secrets';
 export const environment = {
-  production: true
+  production: true,
+  apiKey: secrets.apiKey,
+  apiSecret: secrets.apiSecret,
+  apiFirebase:secrets.apiFireBase
 };
 
 /*

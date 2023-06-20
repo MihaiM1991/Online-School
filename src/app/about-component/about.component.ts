@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MapService } from './google.maps.service';
 import { contactSchool, description, purpose } from './mock-about';
 import { Display } from '../shared-folder/declarations';
-import { schoolSubjectService } from '../school subject/schoolsubject.service';
+
 
 @Component({
   selector: 'app-about',

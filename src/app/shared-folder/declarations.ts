@@ -13,6 +13,7 @@ export interface SchoolSubjectInterface {
   id?: number;
   name?: string;
 }
+
 export const grades: string[] = [
   'sport',
   'music',

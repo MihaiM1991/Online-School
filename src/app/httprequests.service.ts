@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, exhaustMap, map, take } from 'rxjs';
+import { exhaustMap, map, take } from 'rxjs';
 import { Student } from './shared-folder/student.module';
 import { AuthService } from './shared-folder/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class HttpRequests {
+  url: string = environment.apiFirebase;
   constructor(private http: HttpClient, private auth: AuthService) {}
   post(requestBody: Student) {
     return this.auth.userNew.pipe(
       take(1),
       exhaustMap((user) => {
         return this.http.post(
-          'https://mihai-test-a6972-default-rtdb.firebaseio.com/Students.json?auth=' +
-            user.tokenValue,
+          this.url + '.json?auth=' + user.tokenValue,
           requestBody
         );
       })
@@ -26,8 +27,7 @@ export class HttpRequests {
         take(1),
         exhaustMap((user) => {
           return this.http.get<{ [key: string]: Student }>(
-            'https://mihai-test-a6972-default-rtdb.firebaseio.com/Students.json?auth=' +
-              user.tokenValue
+            this.url + '.json?auth=' + user.tokenValue
           );
         })
       )
@@ -49,20 +49,20 @@ export class HttpRequests {
       take(1),
       exhaustMap((user) => {
         return this.http.delete(
-          'https://mihai-test-a6972-default-rtdb.firebaseio.com/Students/' +
-            id +
-            '.json?auth=' +
-            user.tokenValue
+          this.url + '/' + id + '.json?auth=' + user.tokenValue
         );
       })
     );
   }
-  updateStudent(id:string,student: Student) {
+  updateStudent(id: string, student: Student) {
     return this.auth.userNew.pipe(
       take(1),
       exhaustMap((user) => {
-        const url = `https://mihai-test-a6972-default-rtdb.firebaseio.com/Students/` +id +`.json?auth=`+ user.tokenValue;
-        return this.http.put(url, student);
+        console.log(environment.apiFirebase);
+        return this.http.put(
+          this.url + '/' + id + `.json?auth=` + user.tokenValue,
+          student
+        );
       })
     );
   }
