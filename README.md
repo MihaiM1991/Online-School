@@ -1,27 +1,39 @@
-# Catalog
+Online School Catalog Application Documentation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
-## Development server
+Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The Online School Catalog Application is a web-based platform that serves as a presentation tool for a school. It provides features such as a school overview, an online timetable for students, descriptions of grades and teachers, and a catalog for managing student information. The application utilizes Firebase as the backend solution for data storage and implements various APIs for CRUD operations.
 
-## Code scaffolding
+Features
+School Overview:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Provides a brief presentation and information about the school.
+Includes details about the school's mission, vision, and facilities.
+Online Timetable:
 
-## Build
+Displays a timetable for students to view their daily schedule.
+Shows classes, subjects, and timings for each day of the week.
+Enables students to access their personalized timetables.
+Grade Descriptions:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Offers descriptions and details about different grades or classes.
+Provides information about the curriculum, subjects, and activities for each grade.
+Teacher Profiles:
 
-## Running unit tests
+Presents profiles of teachers working at the school.
+Includes information about their qualifications, experience, and areas of expertise.
+Student Catalog:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Allows teachers to manage student information effectively.
+Supports operations such as adding new students, updating existing student details, and deleting students.
+Enables teachers to associate grades with individual students.
+Grade Management:
 
-## Running end-to-end tests
+Provides a way for teachers to record and manage student grades.
+Allows teachers to enter grades and corresponding dates for various subjects.
+Enables editing and deletion of previously recorded grades.
+Authentication and User Accounts:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Implements a secure authentication system using Firebase.
+Allows users to create new accounts and log in to access restricted features.
