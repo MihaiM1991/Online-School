@@ -5,7 +5,6 @@ import { HttpRequests } from '../httprequests.service';
 import { Student } from '../shared-folder/student.module';
 import { StudentService } from './studentService.service';
 import { MessageService } from 'primeng/api';
-
 import { grades, pattern, patternDate } from '../shared-folder/declarations';
 
 @Component({

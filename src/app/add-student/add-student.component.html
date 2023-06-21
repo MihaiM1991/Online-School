@@ -1,10 +1,9 @@
-<p-toast ></p-toast>
+<p-toast></p-toast>
 <body>
   <div mat-dialog-title class="container">
     <h1 class="title">{{ isEdit ? "Edit Student" : "Add Student" }}</h1>
   </div>
   <mat-dialog-content class="box">
-
     <form [formGroup]="form">
       <label class="form-row">
         <input
@@ -24,7 +23,10 @@
       </label>
       <label class="form-row" *ngFor="let controlName of grades">
         {{ controlName | titlecase }}:
-        <div formArrayName="{{ controlName }}" *ngFor="let item of form.get(controlName)['controls']; let i = index">
+        <div
+          formArrayName="{{ controlName }}"
+          *ngFor="let item of form.get(controlName)['controls']; let i = index"
+        >
           <div [formGroupName]="i">
             <input
               formControlName="grades"
@@ -33,13 +35,14 @@
               min="1"
               max="10"
               placeholder="Grades:"
-
             />
             <input formControlName="date" placeholder="Date:dd/mm/yyyy" />
           </div>
         </div>
         <div>
-          <button type="button" (click)="addInput(controlName)">Add More</button>
+          <button type="button" (click)="addInput(controlName)">
+            Add More
+          </button>
           <button
             *ngIf="form.get(controlName).value.length > 1"
             type="button"
@@ -52,11 +55,14 @@
     </form>
   </mat-dialog-content>
   <mat-dialog-actions class="buttons">
-    <p-button styleClass="p-button-danger" matDialogClose (click)="closeMessages()">Cancel</p-button>
+    <p-button
+      styleClass="p-button-danger"
+      matDialogClose
+      (click)="closeMessages()"
+      >Cancel</p-button
+    >
     <div>
       <p-button (click)="onSubmit()">{{ isEdit ? "Update" : "Save" }}</p-button>
-
     </div>
-
   </mat-dialog-actions>
 </body>
