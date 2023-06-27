@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddStudent } from '../add-student/add-student.component';
 import { HttpRequests } from '../httprequests.service';
-import { Student } from '../shared-folder/student.module';
+import { Student } from '../shared-folder/student.model';
 import { StudentService } from '../add-student/studentService.service';
 import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
 import { MessageService } from 'primeng/api';
-import { grades } from '../shared-folder/declarations';
+import { ToastMessageProperty, ToastSeverity, ToastSuccessMessage, grades } from '../shared-folder/declarations';
 @Component({
   selector: 'app-studentGrades',
   templateUrl: './student-grades.component.html',
@@ -31,7 +31,7 @@ export class StudentGrades implements OnInit {
   }
 
   goTo() {
-    this.studentService.takeStudent(null);
+    this.studentService.takeStudentId(null);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -98,13 +98,13 @@ export class StudentGrades implements OnInit {
   deleteStudent(id:string) {
     this.get.delete(id).subscribe(() => this.studentService.fetchStudents());
     this.messageService.add({
-      severity: 'success',
-      summary: 'Student Deleted',
-      detail: 'The student was deleted.',
+      [ToastMessageProperty.Severity]: ToastSeverity.Success,
+      [ToastMessageProperty.Summary]: ToastSeverity.Success,
+      [ToastMessageProperty.Detail]: ToastSuccessMessage.StudentDeleted,
     });
   }
-  editStudent(id) {
-    this.studentService.takeStudent(id);
+  editStudent(id:Student) {
+    this.studentService.takeStudentId(id);
     const dialogConfigEdit = new MatDialogConfig();
 
     dialogConfigEdit.disableClose = true;

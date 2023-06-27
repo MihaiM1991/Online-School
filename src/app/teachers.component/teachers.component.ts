@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { teacherService } from './teachers.service';
-import { TeacherInterfaceEx } from '../shared-folder/declarations';
+
 import { schoolSubjectService } from '../school subject/schoolsubject.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class Teachers implements OnInit {
     private route: ActivatedRoute,
     private show: teacherService,
     private router: Router,
-    private test:schoolSubjectService
+
   ) {}
 
   ngOnInit() {

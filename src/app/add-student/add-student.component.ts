@@ -2,10 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpRequests } from '../httprequests.service';
-import { Student } from '../shared-folder/student.module';
+import { Student } from '../shared-folder/student.model';
 import { StudentService } from './studentService.service';
 import { MessageService } from 'primeng/api';
-import { grades, pattern, patternDate } from '../shared-folder/declarations';
+import {
+  grades,
+  pattern,
+  patternDate,
+  SportGroupItem,
+  ToastErrorMessage,
+  ToastMessageProperty,
+  ToastSeverity,
+  ToastSuccessMessage,
+} from '../shared-folder/declarations';
 
 @Component({
   selector: 'app-my-form',
@@ -38,13 +47,13 @@ export class AddStudent implements OnInit {
     if (this.studentService.showStudentEdit()) {
       this.isEdit = true;
       const id = this.studentService.showStudentEdit();
-      this.httpRequest.get().subscribe((data) => {
+      this.httpRequest.getRequest().subscribe((data) => {
         const student = data.find((item) => item.id === id);
         if (student) {
           this.currentId = student.id;
-          const nameedit = student.name;
+          const nameEdit = student.name;
           this.form.patchValue({
-            name: nameedit,
+            name: nameEdit,
           });
           grades.forEach((subject) => {
             if (student[subject]) {
@@ -55,7 +64,7 @@ export class AddStudent implements OnInit {
       });
     }
   }
-  setExisting(name) {
+  setExisting(name: SportGroupItem[]) {
     const sportGroup = new FormArray([]);
     name.forEach((item) => {
       sportGroup.push(
@@ -78,11 +87,15 @@ export class AddStudent implements OnInit {
           Validators.pattern(this.pattern),
         ],
       ],
-      sport: this.fb.array([this.addFormGroup()]),
-      science: this.fb.array([this.addFormGroup()]),
-      math: this.fb.array([this.addFormGroup()]),
-      history: this.fb.array([this.addFormGroup()]),
-      music: this.fb.array([this.addFormGroup()]),
+      // sport: this.fb.array([this.addFormGroup()]),
+      // science: this.fb.array([this.addFormGroup()]),
+      // math: this.fb.array([this.addFormGroup()]),
+      // history: this.fb.array([this.addFormGroup()]),
+      // economics: this.fb.array([this.addFormGroup()]),
+    });
+    grades.forEach((item) => {
+      const formArray: FormArray = this.fb.array([this.addFormGroup()]);
+      this.form.addControl(item, formArray);
     });
   }
 
@@ -93,9 +106,9 @@ export class AddStudent implements OnInit {
     if (this.isEdit == false) {
       if (this.form.invalid) {
         this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Please check',
+          [ToastMessageProperty.Severity]: ToastSeverity.Error,
+          [ToastMessageProperty.Summary]: ToastSeverity.Error,
+          [ToastMessageProperty.Detail]: ToastErrorMessage.InvalidForm,
         });
         return;
       } else {
@@ -104,9 +117,9 @@ export class AddStudent implements OnInit {
 
         this.dialogRef.close();
         this.messageService.add({
-          severity: 'success',
-          summary: 'Student Added',
-          detail: 'New student has been added.',
+          [ToastMessageProperty.Severity]: ToastSeverity.Success,
+          [ToastMessageProperty.Summary]: ToastSeverity.Success,
+          [ToastMessageProperty.Detail]: ToastSuccessMessage.StudentAdded,
         });
       }
     } else {
@@ -118,9 +131,9 @@ export class AddStudent implements OnInit {
           this.studentService.fetchStudents();
         });
       this.messageService.add({
-        severity: 'success',
-        summary: 'Edit Student',
-        detail: 'The student has been edit.',
+        [ToastMessageProperty.Severity]: ToastSeverity.Success,
+        [ToastMessageProperty.Summary]: ToastSeverity.Success,
+        [ToastMessageProperty.Detail]: ToastSuccessMessage.StudentEdit,
       });
     }
   }
@@ -137,9 +150,9 @@ export class AddStudent implements OnInit {
   }
   closeMessages() {
     this.messageService.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'No actions was performed ',
+      [ToastMessageProperty.Severity]: ToastSeverity.Warning,
+      [ToastMessageProperty.Summary]: ToastSeverity.Warning,
+      [ToastMessageProperty.Detail]: ToastErrorMessage.OtherError,
     });
   }
   getFormControlClass(controlName: string) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AuthResponseData } from '../login-component/authresponse.model';
+import { authResponseData } from '../login-component/authresponse.model';
 import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { User } from './user.model';
@@ -12,13 +12,13 @@ export class AuthService {
   userName: User = null;
   private tokenExpirationTimer: any;
   test: any;
-  url1: string = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`;
-  url: string = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`;
+  url1: string = `${environment.apiFireBaseSignIn}${environment.apiKey}`;
+  url: string = `${environment.apiFireBaseSignUp}${environment.apiKey}`;
   userNew = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private route: Router) {}
   signUp(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(this.url, {
+      .post<authResponseData>(this.url, {
         email: email,
         password: password,
         returnSecureToken: true,
@@ -30,9 +30,9 @@ export class AuthService {
             new Date().getTime() + +response.expiresIn * 1000
           );
           const user = new User(
-            response.email,
-            response.localId,
-            response.idToken,
+            response?.email,
+            response?.localId,
+            response?.idToken,
             expirationDate
           );
           this.userNew.next(user);
@@ -42,7 +42,7 @@ export class AuthService {
 
   loginMethod(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(this.url1, {
+      .post<authResponseData>(this.url1, {
         email: email,
         password: password,
         returnSecureToken: true,

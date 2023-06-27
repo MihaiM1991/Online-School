@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import 'jspdf-autotable';
 import { timeTableService } from './timetable.service';
 import { Router } from '@angular/router';
-import { DisciplinesExample, daysOfWeek } from '../shared-folder/declarations';
+import {
+  DisciplinesExample,
+  daysOfWeek,
+  grades,
+} from '../shared-folder/declarations';
 
 @Component({
   selector: 'app-timetable',
@@ -10,6 +14,7 @@ import { DisciplinesExample, daysOfWeek } from '../shared-folder/declarations';
   styleUrls: ['./timetable.component.scss'],
 })
 export class TimeTable implements OnInit {
+  grades: string[] = grades;
   daysOfWeek: string[] = daysOfWeek;
   discExample: DisciplinesExample[] = [];
 
@@ -20,17 +25,18 @@ export class TimeTable implements OnInit {
       this.discExample = data;
     });
   }
-  goToDisciplines($event, abc) {
-    if (
-      abc == 'Sport' ||
-      abc == 'Science' ||
-      abc == 'Math' ||
-      abc == 'History' ||
-      abc == 'Economics'
-    ) {
+
+  goToDisciplines(abc: string) {
+
+    let matchFound = false;
+    this.grades.forEach((item) => {
+
+      if (item == abc.toLowerCase()) {
+        matchFound = true;
+      }
+    });
+    if (matchFound) {
       this.router.navigate(['/school-subjects'], { fragment: abc });
-    } else {
-      return;
     }
   }
 }

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
       this.location.back();
     }
   }
-  goGrades() {
+  navToGrades() {
     this.route.navigate(['grades']);
   }
 }

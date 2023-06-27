@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exhaustMap, map, take } from 'rxjs';
-import { Student } from './shared-folder/student.module';
+import { Student } from './shared-folder/student.model';
 import { AuthService } from './shared-folder/auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +21,7 @@ export class HttpRequests {
     );
   }
 
-  get() {
+  getRequest() {
     return this.auth.userNew
       .pipe(
         take(1),

@@ -43,3 +43,29 @@ export interface DisciplinesExample{
   mat4?: string,
   mat5?: string,
 }
+export interface SportGroupItem {
+  grades: string;
+  date: string;
+}
+export enum ToastMessageProperty {
+  Severity = 'severity',
+  Summary = 'summary',
+  Detail = 'detail'
+}
+export enum ToastErrorMessage {
+  InvalidForm = 'Please check',
+  OtherError = 'No action was perfomed '
+}
+
+export enum ToastSeverity {
+  Error = 'error',
+  Success = 'success',
+  Info = 'info',
+  Warning = 'warning'
+}
+export enum ToastSuccessMessage {
+  StudentAdded = 'New student has been added.',
+  StudentEdit='The Student was edit',
+  StudentDeleted='The Student was deleted'
+}
+

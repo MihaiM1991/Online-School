@@ -7,7 +7,9 @@ export const environment = {
   apiKey: config.apiKey,
   apiSecret: config.apiSecret,
   apiFirebase:config.apiFireBase,
-  apiGoogle:config.apiGoogle
+  apiGoogle:config.apiGoogle,
+  apiFireBaseSignUp:config.apiFireBaseSignUp,
+  apiFireBaseSignIn:config.apiFireBaseSignIn
 };
 
 /*

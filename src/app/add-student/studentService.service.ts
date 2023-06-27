@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Student } from '../shared-folder/student.module';
+import { Student } from '../shared-folder/student.model';
 import { HttpRequests } from '../httprequests.service';
 @Injectable({ providedIn: 'root' })
 export class StudentService {
@@ -25,17 +25,17 @@ export class StudentService {
   }
 
   fetchStudents() {
-    this.http.get().subscribe((data: Student[]) => {
+    this.http.getRequest().subscribe((data: Student[]) => {
       this.students = data;
       this.studentsSubject.next(this.students);
     });
   }
   fetchEditStudent() {
-    this.http.get().subscribe((data: Student[]) => {
+    this.http.getRequest().subscribe((data: Student[]) => {
       this.students = data;
     });
   }
-  takeStudent(data: Student) {
+  takeStudentId(data: Student) {
     this.id = data;
     return this.id;
   }
